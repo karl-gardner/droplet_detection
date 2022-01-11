@@ -15,6 +15,6 @@ Directions to Run Droplet Detection Models:
 5) Open the yolov3 colab notebook from the colab badge provided, then click "Save a copy in Drive" under File > Save a copy in Drive.  Do the same for the provided yolov5 colab notebook.
 6) This will save the two notebooks in the "Colab Notebooks" folder in your google drive.  Move these two notebooks to the droplet_classification folder and rename them yolov3.ipynb and yolov5.ipynb respectively in order for the directories to be correct.  The final droplet_classification folder should look like this:<img width="720" alt="image" src="https://user-images.githubusercontent.com/91646805/148874654-890a5d94-f9e9-4273-bcd8-318df44feca4.png">
 
-7) Click the link here: https://universe.roboflow.com/karl-gardner-kmk9u/pc3dropletdetection2/6 and sign in with github
+7) Click the link here: https://universe.roboflow.com/karl-gardner-kmk9u/pc3dropletdetection2/6 and you will see two datasets (No_Augmentation and final_dataset).  Use either one and click on "Download" in the upper right corner.  Then, click "Sign in with Github" and follow the prompts to allow roboflow to sign in with github.  Or you may create an account with roboflow
 
 8) You can now use both notebooks to perform more testing or contribute to the project.  You can find the code written for many of the figures in the final paper: DOI Website
