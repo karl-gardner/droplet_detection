@@ -8,6 +8,6 @@ hello
 
 Directions to Run Droplet Detection Models:
 
-1) use this link: https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing to access the shared google drive folder.
-
-2) 
+1) First create a folder in your google drive account called droplet_detection (or whatever you would like)
+2) use this link: https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing to access the shared google drive folder
+3) At the top
