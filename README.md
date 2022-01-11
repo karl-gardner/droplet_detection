@@ -12,4 +12,4 @@ Directions to Run Droplet Detection Models:
 2) use this link: https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing to access the shared google drive folder
 3) At the top there will be a dropdown arrow after the folder location (Shared with me > data_files): click on this dropdown arrow
 4) Click on the "Add shortcut to Drive" button then navigate to inside the droplet_classification folder and click the blue "Add Shortcut" button.  This will add a shortcut to the shared google drive folder in your droplet_classification folder.
-5) 
+5) Open the yolov3 colab notebook from the colab badge provided, then under "File > Save a copy in Drive" save a copy of the colab notebook to your droplet_classification folder.  Do the same with the yolov5 notebook provided and the final droplet_classification folder should look like this:
