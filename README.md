@@ -3,6 +3,11 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 
 ![experimental_workflow](https://user-images.githubusercontent.com/91646805/148269422-758ea029-7165-4259-98b7-d89a26e66361.png)
 
+<details>
+<summary>How do I dropdown?</summary>
+<br>
+This is how you dropdown.
+</details>
 
 # Please Use The Following Directions to Run Droplet Detection Models:
 
