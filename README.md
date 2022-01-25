@@ -4,6 +4,16 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 ![experimental_workflow](https://user-images.githubusercontent.com/91646805/148269422-758ea029-7165-4259-98b7-d89a26e66361.png)
 
 <details>
+<summary>Droplet Ratio Comparisons</summary>
+<br>
+![yolov3_vs_handcount](https://user-images.githubusercontent.com/91646805/151048009-8cc1b8e2-7988-49f2-ab89-171cb3b44554.png)
+
+![yolov3_vs_poisson](https://user-images.githubusercontent.com/91646805/151048029-08d087bd-f31c-4ea1-aa0a-fe7399ade79f.png)
+
+</details>
+
+
+<details>
 <summary>Instructions to Run Droplet Detection Model:</summary>
 <br>
 
