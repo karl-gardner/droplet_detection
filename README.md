@@ -6,7 +6,6 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 <details>
 <summary>Instructions to Run Droplet Detection Model:</summary>
 <br>
-# Please Use The Following Directions to Run Droplet Detection Models:
 
 1) First create a folder in your google drive account called droplet_classification (This step is important in order to keep the directories in check)
 2) Use this link: https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing to access the shared google drive folder
@@ -23,5 +22,3 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 9) Repeat steps 7 and 8 with the cell dataset in the link provided: https://universe.roboflow.com/karl-gardner-kmk9u/cropped_drops2/1.  This dataset only needs to be copied into the yolov3.ipynb notebook since it is not used in the yolov5.ipynb notebook.
 10) You can now use both notebooks to perform more testing or contribute to the project.  You can find the code written for many of the figures in the final paper: DOI Website
 </details>
-
-
