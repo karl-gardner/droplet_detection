@@ -306,7 +306,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
             ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision)
-            axins.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision)
+            axins.plot(px, y, linewidth=1)  # plot(recall, precision)
     else:
         ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
@@ -320,11 +320,10 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.set_ylim(0, 1)
     ax.tick_params(labelsize=15)
     
-    # sub region of the original image
-    x1, x2, y1, y2 = .6, .7, .7, .8
-    axins.set_xlim(x1, x2)
-    axins.set_ylim(y1, y2)
-    #plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
+#     sub region of the original image
+#     x1, x2, y1, y2 = .6, .7, .7, .8
+#     axins.set_xlim(x1, x2)
+#     axins.set_ylim(y1, y2)
     plt.legend(loc="lower center")
     
     fig.savefig(Path(save_dir), dpi=250)
