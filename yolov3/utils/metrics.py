@@ -309,7 +309,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.set_ylabel('Precision', fontsize=20)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.tick_params(fontsize=20)
+    ax.tick_params(labelsize=20)
     plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
     fig.savefig(Path(save_dir), dpi=250)
     plt.close()
