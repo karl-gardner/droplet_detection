@@ -321,10 +321,10 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.tick_params(labelsize=15)
     
     # sub region of the original image
-    x1, x2, y1, y2 = .8, 1, 1, .6
+    x1, x2, y1, y2 = .8, 1, .6, 1
     axins.set_xlim(x1, x2)
     axins.set_ylim(y1, y2)
-    axins.axis('off')
+#     axins.axis('off')
     plt.legend(loc="lower center")
     
     fig.savefig(Path(save_dir), dpi=250)
