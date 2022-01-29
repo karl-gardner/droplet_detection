@@ -299,7 +299,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     # inset axiss....
-    axins = ax.inset_axes([0.2, 0.2, 0.35, 0.7])
+    axins = ax.inset_axes([0.1, 0.2, 0.35, 0.7])
    
     py = np.stack(py, axis=1)
 
@@ -327,16 +327,22 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     axins.set_xticks([])
     axins.set_yticks([])
     ax.indicate_inset_zoom(axins, edgecolor="black")
-    
-    ax_leg = fig.subplot(111)
-    line1, = ax_leg.plot(px, py.mean(1), c="red", lw=4, linestyle="dashdot")
-    line2, = ax_leg.plot(px, py.mean(1), c="green", lw=1, linestyle="--")
+
 #     axins.axis('off')
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
     plt.close()
-
-
+    
+    x = np.linspace(1, 100, 1000)
+    y = np.log(x)
+    y1 = np.sin(x)
+    fig = plt.figure("Line plot")
+    legendFig = plt.figure("Legend plot")
+    ax = fig.add_subplot(111)
+    line1, = ax.plot(x, y, c="red", lw=4, linestyle="dashdot")
+    line2, = ax.plot(x, y1, c="green", lw=1, linestyle="--")
+    legendFig.legend([line1, line2], ["y=log(x)", "y=sin(x)"], loc='center')
+    legendFig.savefig('legend.png')
 
 
 def plot_mc_curve(px, py, save_dir='mc_curve.png', names=(), xlabel='Confidence', ylabel='Metric'):
