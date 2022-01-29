@@ -299,7 +299,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     # inset axiss....
-    axins = ax.inset_axes([0.2, 0.1, 0.35, 0.7])
+    axins = ax.inset_axes([0.3, 0.1, 0.35, 0.7])
    
     py = np.stack(py, axis=1)
 
@@ -342,7 +342,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     line1, = ax.plot(x, y, c="red", lw=4, linestyle="dashdot")
     line2, = ax.plot(x, y1, c="green", lw=1, linestyle="--")
     legendFig.legend([line1, line2], ["y=log(x)", "y=sin(x)"], loc='center')
-    legendFig.savefig(Path("legend.png"), dpi=250)
+    legendFig.savefig("/legend.png", dpi=250)
 
 
 def plot_mc_curve(px, py, save_dir='mc_curve.png', names=(), xlabel='Confidence', ylabel='Metric'):
