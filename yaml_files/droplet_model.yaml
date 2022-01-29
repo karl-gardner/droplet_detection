@@ -1,0 +1,5 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+nc: 4
+names: ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
