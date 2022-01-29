@@ -299,7 +299,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     # inset axiss....
-    axins = ax.inset_axes([0.3, 0.1, 0.35, 0.7])
+    axins = ax.inset_axes([0.25, 0.05, 0.35, 0.7])
    
     py = np.stack(py, axis=1)
 
@@ -342,8 +342,10 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     legendFig = plt.figure("Legend plot")
     ax = fig.add_subplot(111)
     line1, = ax.plot(x, y, lw=4, linestyle="dashdot")
-    line2, = ax.plot(x, y1, lw=1, linestyle="--")
-    legendFig.legend([line1, line2], ["y=log(x)", "y=sin(x)"], loc='center')
+    line2, = ax.plot(x, y, lw=1, linestyle="--")
+    line3, = ax.plot(x, y, lw=4, linestyle="dashdot")
+    line4, = ax.plot(x, y, lw=1, linestyle="--")
+    legendFig.legend([line1, line2,], ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
     legendFig.savefig("/legend.png", dpi=250)
 
 
