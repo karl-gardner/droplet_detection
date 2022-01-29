@@ -299,7 +299,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     # inset axiss....
-    axins = ax.inset_axes([0.5, 0.4, 0.4, 0.4])
+    axins = ax.inset_axes([0.3, 0.4, 0.4, 0.4])
    
     py = np.stack(py, axis=1)
 
@@ -324,6 +324,10 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     x1, x2, y1, y2 = .8, 1, .5, 1
     axins.set_xlim(x1, x2)
     axins.set_ylim(y1, y2)
+    axins.set_xticks([])
+    axins.set_xticks([])
+    ax.indicate_inset_zoom(axins, edgecolor="black")
+    
 #     axins.axis('off')
 #     plt.legend(loc="lower center")
     
