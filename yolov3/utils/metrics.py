@@ -328,19 +328,14 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     axins.set_yticks([])
     ax.indicate_inset_zoom(axins, edgecolor="black")
     
+    ax_leg = fig.subplot(111)
+    line1, = ax_leg.plot(px, py.mean(1), c="red", lw=4, linestyle="dashdot")
+    line2, = ax_leg.plot(px, py.mean(1), c="green", lw=1, linestyle="--")
 #     axins.axis('off')
-#     plt.legend(loc="lower center")   
+#     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
     plt.close()
-    
-    fig = plt.figure()
-    figlegend = plt.figure(figsize=(3,2))
-    ax = fig.add_subplot(111)
-    lines = ax.plot(range(10), np.randn(10), range(10), np.randn(10))
-    figlegend.legend(lines, ('one', 'two'), 'center')
-    fig.show()
-    figlegend.show()
-    figlegend.savefig('legend.png')
+
 
 
 
