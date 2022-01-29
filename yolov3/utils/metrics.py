@@ -341,11 +341,11 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     fig = plt.figure("Line plot")
     legendFig = plt.figure("Legend plot")
     ax = fig.add_subplot(111)
-    line1, = ax.plot(x, y, lw=4, linestyle="dashdot")
-    line2, = ax.plot(x, y, lw=1, linestyle="--")
-    line3, = ax.plot(x, y, lw=4, linestyle="dashdot")
-    line4, = ax.plot(x, y, lw=1, linestyle="--")
-    legendFig.legend([line1, line2,], ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
+    line1, = ax.plot(x, y, lw=4, linewidth=1)
+    line2, = ax.plot(x, y, lw=1, linewidth=1)
+    line3, = ax.plot(x, y, lw=4, linewidth=1)
+    line4, = ax.plot(x, y, lw=1, linewidth=3)
+    legendFig.legend([line1, line2, line3, line4], ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
     legendFig.savefig("/legend.png", dpi=250)
 
 
