@@ -300,7 +300,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     
     # save legend externally
-    legendFig = plt.figure("Legend plot", figsize=[15,2])
+    legendFig = plt.figure("Legend plot", figsize=[14,2])
     
     # inset axis....
     axins = ax.inset_axes([0.25, 0.05, 0.35, 0.7])
@@ -339,7 +339,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     fig.savefig(Path(save_dir), dpi=250)
     
     legendFig.legend(lines, text, loc='center', ncol=5)
-    legendFig.savefig(Path(save_leg), dpi=250)
+    legendFig.savefig(Path(save_leg), dpi=400)
     
     plt.close()
 
