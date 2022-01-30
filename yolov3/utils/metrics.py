@@ -336,7 +336,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     ax.indicate_inset_zoom(axins, edgecolor="black")
 
 #     plt.legend(loc="lower center")
-    fig.savefig(Path(save_dir), dpi=250)
+    fig.savefig(Path(save_dir), dpi=400)
     
     legendFig.legend(lines, text, loc='center', ncol=5)
     legendFig.savefig(Path(save_leg), dpi=400)
