@@ -307,16 +307,19 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
    
     py = np.stack(py, axis=1)
     lines = []
+    text = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
-            lines.append(ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')[0])  # plot(recall, precision))
+            lines.append(ax.plot(px, y, linewidth=1)[0])  # plot(recall, precision))
+            text.append(f'{names[i]} {ap[i, 0]:.3f}')
             axins.plot(px, y, linewidth=1)
     else:
         lines.append(ax.plot(px, py, linewidth=1, color='grey')[0])  # plot(recall, precision))
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         
 
-    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())[0])
+    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue')[0])
+    text.append('all classes %.3f mAP@0.5' % ap[:, 0].mean())
     axins.plot(px, py.mean(1), linewidth=3, color='blue')
     ax.set_xlabel('Recall', fontsize=30)
     ax.set_ylabel('Precision', fontsize=30)
@@ -334,8 +337,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
 
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
-    #, ["y=log(x)", "y=sin(x)", "blabla", "blablas","blablas"]
-    legendFig.legend(lines, loc='center', ncol=5)
+    legendFig.legend(lines, text, loc='center', ncol=5)
     legendFig.savefig(Path(save_leg), dpi=250)
     
     plt.close()
