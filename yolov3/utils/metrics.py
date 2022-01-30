@@ -331,6 +331,9 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
 #     axins.axis('off')
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
+    legendFig.legend(lines, ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
+    legendFig.savefig("/legend.png", dpi=250)
+    
     plt.close()
 
 
