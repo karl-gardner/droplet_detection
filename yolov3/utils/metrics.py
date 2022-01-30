@@ -308,7 +308,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
             lines.append(ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}'))  # plot(recall, precision))
             axins.plot(px, y, linewidth=1)  # plot(recall, precision)
     else:
-        lines.append(ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision))
+        lines.append(ax.plot(px, py, linewidth=1, color='grey'))  # plot(recall, precision))
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         
 
