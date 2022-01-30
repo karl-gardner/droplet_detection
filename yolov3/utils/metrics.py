@@ -302,17 +302,17 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     axins = ax.inset_axes([0.25, 0.05, 0.35, 0.7])
    
     py = np.stack(py, axis=1)
-
+    lines = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
-            ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision)
+            lines.append(ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision))
             axins.plot(px, y, linewidth=1)  # plot(recall, precision)
     else:
-        ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
+        lines.append(ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision))
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         
 
-    ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())
+    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean()))
     axins.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())
     ax.set_xlabel('Recall', fontsize=30)
     ax.set_ylabel('Precision', fontsize=30)
@@ -332,21 +332,6 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
     plt.close()
-    
-    x = np.linspace(1, 100, 1000)
-    y1 = np.log(x)
-    y2 = np.sin(x)
-    y3 = np.sin(x)
-    y4 = np.sin(x)
-    fig = plt.figure("Line plot")
-    legendFig = plt.figure("Legend plot")
-    ax = fig.add_subplot(111)
-    line1, = ax.plot(x, y, lw=4, linewidth=1)
-    line2, = ax.plot(x, y, lw=1, linewidth=1)
-    line3, = ax.plot(x, y, lw=4, linewidth=1)
-    line4, = ax.plot(x, y, lw=1, linewidth=3)
-    legendFig.legend([line1, line2, line3, line4], ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
-    legendFig.savefig("/legend.png", dpi=250)
 
 
 def plot_mc_curve(px, py, save_dir='mc_curve.png', names=(), xlabel='Confidence', ylabel='Metric'):
