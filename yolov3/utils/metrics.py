@@ -298,7 +298,11 @@ def wh_iou(wh1, wh2):
 def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
-    # inset axiss....
+    
+    # save legend externally
+    legendFig = plt.figure("Legend plot")
+    
+    # inset axis....
     axins = ax.inset_axes([0.25, 0.05, 0.35, 0.7])
    
     py = np.stack(py, axis=1)
