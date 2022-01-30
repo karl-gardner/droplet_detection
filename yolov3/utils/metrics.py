@@ -74,7 +74,7 @@ def ap_per_class(tp, conf, pred_cls, target_cls, plot=False, save_dir='.', names
     names = [v for k, v in names.items() if k in unique_classes]  # list: only classes that have data
     names = {i: v for i, v in enumerate(names)}  # to dict
     if plot:
-        plot_pr_curve(px, py, ap, Path(save_dir) / 'PR_curve.png', names)
+        plot_pr_curve(px, py, ap, Path(save_dir) / 'PR_curve.png', Path(save_dir) / 'legend.png', names)
         plot_mc_curve(px, f1, Path(save_dir) / 'F1_curve.png', names, ylabel='F1')
         plot_mc_curve(px, p, Path(save_dir) / 'P_curve.png', names, ylabel='Precision')
         plot_mc_curve(px, r, Path(save_dir) / 'R_curve.png', names, ylabel='Recall')
@@ -295,7 +295,7 @@ def wh_iou(wh1, wh2):
 
 # karl-gardner changes here --------------------------------------------------------------------------------------------
 
-def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
+def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
     
@@ -335,8 +335,9 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
 #     axins.axis('off')
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=250)
+    
     legendFig.legend(lines, ["y=log(x)", "y=sin(x)", "blabla", "blablas"], loc='center', ncol=2)
-    legendFig.savefig("/legend.png", dpi=250)
+    legendFig.savefig(Path(save_dir), dpi=250)
     
     plt.close()
 
