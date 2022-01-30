@@ -312,7 +312,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         
 
-    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean()))
+    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())[0])
     axins.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())
     ax.set_xlabel('Recall', fontsize=30)
     ax.set_ylabel('Precision', fontsize=30)
