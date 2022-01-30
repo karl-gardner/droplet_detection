@@ -305,7 +305,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     lines = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
-            lines.append(ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision))
+            lines.append(ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}'))  # plot(recall, precision))
             axins.plot(px, y, linewidth=1)  # plot(recall, precision)
     else:
         lines.append(ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision))
