@@ -339,7 +339,8 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=500)
     
-    legendFig.legend(lines, text, loc='center', ncol=3)
+    order = [0,1,2,4,3]
+    legendFig.legend([lines[idx] for idx in order], [text[idx] for idx in order], loc='center', ncol=3)
     legendFig.savefig(Path(save_leg), dpi=600)
     
     plt.close()
