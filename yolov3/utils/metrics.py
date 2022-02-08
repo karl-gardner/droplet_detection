@@ -326,7 +326,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.tick_params(labelsize=21)
-    ax,set_title("YOLOv3",fontsize=35,y=1.01)
+    ax.set_title("YOLOv3",fontsize=35,y=1.01)
     
     # sub region of the original image
     x1, x2, y1, y2 = .8, 1, .5, 1
