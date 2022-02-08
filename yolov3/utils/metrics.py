@@ -319,7 +319,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
         
 
     lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue')[0])
-    text.append('all classes @ IOU 0.5')
+    text.append('all classes')
     axins.plot(px, py.mean(1), linewidth=3, color='blue')
     ax.set_xlabel('Recall', fontsize=30)
     ax.set_ylabel('Precision', fontsize=30)
