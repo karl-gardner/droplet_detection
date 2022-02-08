@@ -303,7 +303,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     legendFig = plt.figure("Legend plot", figsize=[14,2])
     
     # inset axis....
-    axins = ax.inset_axes([0.2, 0.05, 0.35, 0.7])
+    axins = ax.inset_axes([0.2, 0.05, 0.3, 0.7])
    
     py = np.stack(py, axis=1)
     lines = []
@@ -312,7 +312,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
         for i, y in enumerate(py.T):
             lines.append(ax.plot(px, y, linewidth=1)[0])  # plot(recall, precision))
             text.append(names[i])
-            axins.plot(px, y, linewidth=1)
+            axins.plot(px, y, linewidth=2)
     else:
         lines.append(ax.plot(px, py, linewidth=1, color='grey')[0])  # plot(recall, precision))
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
