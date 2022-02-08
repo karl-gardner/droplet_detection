@@ -302,10 +302,14 @@ def wh_iou(wh1, wh2):
 
 def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
-    fig, ax = plt.subplots(1, 1, figsize=(9, 6), tight_layout=True)
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6), tight_layout=True)
+    
+    # save legend externally
+    legendFig = plt.figure("Legend plot", figsize=[14,2])
     
     # inset axis....
-    axins = ax.inset_axes([0.2, 0.05, 0.35, 0.7])
+    axins = ax.inset_axes([0.2, 0.05, 0.3, 0.7])
+   
     py = np.stack(py, axis=1)
 
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
@@ -316,7 +320,6 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
         ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
 
-    ax.plot(px, py.mean(1), linewidth=3, color='blue', label='all classes %.3f mAP@0.5' % ap[:, 0].mean())
     axins.plot(px, py.mean(1), linewidth=3, color='blue')
     ax.set_xlabel('Recall', fontsize=30)
     ax.set_ylabel('Precision', fontsize=30)
@@ -331,9 +334,10 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     axins.set_xticks([])
     axins.set_yticks([])
     ax.indicate_inset_zoom(axins, edgecolor="black")
+    ax.set_title("YOLOv5",fontsize=34)
     
 #     plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
-    fig.savefig(Path(save_dir), dpi=400)
+    fig.savefig(Path(save_dir), dpi=500)
     plt.close()
 
 
