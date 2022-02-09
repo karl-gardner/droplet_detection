@@ -231,8 +231,8 @@ def run(data,
         if plots and batch_i < 3:
             f = save_dir / f'val_batch{batch_i}_labels_and_pred.jpg'  # labels
             Thread(target=plot_images, args=(im, targets, output_to_target(out), paths, f, names), daemon=True).start()
-            #f = save_dir / f'val_batch{batch_i}_pred.jpg'  # predictions
-            #Thread(target=plot_images, args=(im, output_to_target(out), paths, f, names), daemon=True).start()
+            f = save_dir / f'val_batch{batch_i}_pred.jpg'  # predictions
+            Thread(target=plot_images, args=(im, output_to_target(out), paths, f, names), daemon=True).start()
 
     # Compute metrics
     stats = [np.concatenate(x, 0) for x in zip(*stats)]  # to numpy
