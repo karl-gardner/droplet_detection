@@ -179,14 +179,12 @@ def output_to_target(output):
     return np.array(targets)
 
 
-def plot_images(images, targets, predictions, paths=None, fname='images.jpg', names=None, max_size=1920, max_subplots=9):
+def plot_images(images, targets, paths=None, fname='images.jpg', names=None, max_size=1920, max_subplots=16):
     # Plot image grid with labels
     if isinstance(images, torch.Tensor):
         images = images.cpu().float().numpy()
     if isinstance(targets, torch.Tensor):
         targets = targets.cpu().numpy()
-    if isinstance(predictions, torch.Tensor):
-        predictions = predictions.cpu().numpy()
     if np.max(images[0]) <= 1:
         images *= 255  # de-normalise (optional)
     bs, _, h, w = images.shape  # batch size, _, height, width
@@ -214,10 +212,9 @@ def plot_images(images, targets, predictions, paths=None, fname='images.jpg', na
     annotator = Annotator(mosaic, line_width=round(fs / 10), font_size=fs, pil=True)
     for i in range(i + 1):
         x, y = int(w * (i // ns)), int(h * (i % ns))  # block origin
-        annotator.rectangle([x, y, x + w, y + h], None, (0, 0, 0), width=6)  # borders
+        annotator.rectangle([x, y, x + w, y + h], None, (255, 255, 255), width=2)  # borders
         if paths:
-            pass
-            #annotator.text((x + 5, y + 5 + h), text=Path(paths[i]).name[:40], txt_color=(220, 220, 220))  # filenames
+            annotator.text((x + 5, y + 5 + h), text=Path(paths[i]).name[:40], txt_color=(220, 220, 220))  # filenames
         if len(targets) > 0:
             ti = targets[targets[:, 0] == i]  # image targets
             boxes = xywh2xyxy(ti[:, 2:6]).T
@@ -239,36 +236,9 @@ def plot_images(images, targets, predictions, paths=None, fname='images.jpg', na
                 cls = names[cls] if names else cls
                 if labels or conf[j] > 0.25:  # 0.25 conf thresh
                     label = f'{cls}' if labels else f'{cls} {conf[j]:.1f}'
-                    
-                    annotator.lw = 9
-                    annotator.box_label(box, 0, color=(0,0,0))
-                    
-        if len(predictions) > 0:
-            ti = predictions[predictions[:, 0] == i]  # image targets
-            boxes = xywh2xyxy(ti[:, 2:6]).T
-            classes = ti[:, 1].astype('int')
-            labels = ti.shape[1] == 6  # labels if no conf column
-            conf = None if labels else ti[:, 6]  # check for confidence presence (label vs pred)
-
-            if boxes.shape[1]:
-                if boxes.max() <= 1.01:  # if normalized with tolerance 0.01
-                    boxes[[0, 2]] *= w  # scale to pixels
-                    boxes[[1, 3]] *= h
-                elif scale < 1:  # absolute coords need scale if image scales
-                    boxes *= scale
-            boxes[[0, 2]] += x
-            boxes[[1, 3]] += y
-            for j, box in enumerate(boxes.T.tolist()):
-                cls = classes[j]
-                color = colors(cls)
-                cls = names[cls] if names else cls
-                if labels or conf[j] > 0.25:  # 0.25 conf thresh
-                    label = f'{cls}' if labels else f'{cls} {conf[j]:.1f}'
-                    annotator.lw = 2
-                    annotator.box_label(box, label, color=(255, 0, 0))
-                    
-                    
+                    annotator.box_label(box, label, color=color)
     annotator.im.save(fname)  # save
+
 
 
 def plot_lr_scheduler(optimizer, scheduler, epochs=300, save_dir=''):
