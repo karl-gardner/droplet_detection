@@ -179,7 +179,7 @@ def output_to_target(output):
     return np.array(targets)
 
 
-def plot_images(images, targets, predictions, paths=None, fname='images.jpg', names=None, max_size=1920, max_subplots=16):
+def plot_images(images, targets, predictions, paths=None, fname='images.jpg', names=None, max_size=1920, max_subplots=9):
     # Plot image grid with labels
     if isinstance(images, torch.Tensor):
         images = images.cpu().float().numpy()
