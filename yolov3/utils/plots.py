@@ -185,6 +185,8 @@ def plot_images(images, targets, predictions, paths=None, fname='images.jpg', na
         images = images.cpu().float().numpy()
     if isinstance(targets, torch.Tensor):
         targets = targets.cpu().numpy()
+    if isinstance(predictions, torch.Tensor):
+        predictions = predictions.cpu().numpy()
     if np.max(images[0]) <= 1:
         images *= 255  # de-normalise (optional)
     bs, _, h, w = images.shape  # batch size, _, height, width
