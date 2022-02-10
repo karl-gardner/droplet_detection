@@ -92,13 +92,18 @@ def save_results(images_path):
   os.mkdir('/test_results')
   os.mkdir('/test_results/gt_vs_pred')
   os.mkdir('/test_results/inputs')
+  os.mkdir('/test_results/gts')
   os.mkdir('/test_results/preds')
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
     pred_file = "runs/detect/exp/"+f
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
-
+    
+    input_im = cv2.imread(im_file)
+    cv2.imwrite('/test_results/inputs/' + f[:-4] + '.png', input_im)
+    
+    # Save boxes with ground thruth labels in numpy array
     with open(label_file) as lab:
       lines = lab.readlines()
       rows = len(lines)
@@ -111,15 +116,34 @@ def save_results(images_path):
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
-    boxes = xywhn2xyxy(boxes, w=544, h=544)
+    gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
+    
+    # Save boxes with predicted labels in numpy array
+    with open(label_file) as lab:
+      lines = lab.readlines()
+      rows = len(lines)
+      boxes = np.zeros((rows,4))
+      classes = []
+      for i, line in enumerate(lines):
+        line = line.split()
+        classes.append(int(line[0]))
+        boxes[i,0] = float(line[1])
+        boxes[i,1] = float(line[2])
+        boxes[i,2] = float(line[3])
+        boxes[i,3] = float(line[4])
+    pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
 
-    im = cv2.imread(im_file)
-    cv2.imwrite('/test_results/inputs/' + f[:-4] + '.png', im)
-    for i in range(boxes.shape[0]):
+    for i in range(gt_boxes.shape[0]):
       lab = "cell"
       col = (0,0,255)
-      b = boxes[i,:]
-      im = box_label(im, b,lab,col)
-    cv2.imwrite('/test_results/gt_vs_pred' + f[:-4] + '.png',im)
-  
+      b = gt_boxes[i,:]
+      im = box_label(im, b, lab, col)
+    cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+    
+    for i in range(gt_boxes.shape[0]):
+      lab = "cell"
+      col = (0,0,255)
+      b = pred_boxes[i,:]
+      im = box_label(im, b, lab, col)
+    cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
