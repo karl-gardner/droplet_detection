@@ -64,12 +64,11 @@ def cell_labels(label_path = None, set = None):
   
   
   
-def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1):
+def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1, tf = 1):
   # Add one xyxy box to image with label
   p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
   cv2.rectangle(image, p1, p2, color, thickness=box_thick, lineType=cv2.LINE_AA)
   if label:
-      tf = 4  # font thickness
       w, h = cv2.getTextSize(label, 0, fontScale=fontsize, thickness=tf)[0]  # text width, height
       outside = p1[1] - h - 3 >= 0  # label fits outside box
       p2 = p1[0] + w, p1[1] - h - 3 if outside else p1[1] + h + 3
@@ -149,7 +148,7 @@ def save_results(images_path, yolo, model):
         lab = "cell %.2f" % conf[i]
         col = (0, 0, 255)
         b = pred_boxes[i,:]
-        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2)
+        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2, tf=4)
       cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
       
     if model == 'droplet':
@@ -159,12 +158,12 @@ def save_results(images_path, yolo, model):
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
-        im = box_label(im, b, label=labels[classes[i]], color=colors[classes[i]], box_thick=1)
+        im = box_label(im, b, label=labels[classes[i]], color=colors[classes[i]], box_thick=1, tf=2)
       cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
 
       # Save images with annotated predicted labels
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
-        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], color=colors[classes[i]], box_thick=1, fontsize=0.8)
+        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], color=colors[classes[i]], box_thick=1, fontsize=0.5, tf = 2)
       cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
