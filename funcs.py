@@ -159,7 +159,7 @@ def save_results(images_path, yolo, model):
       for i in range(gt_boxes.shape[0]):
         col = (0, 255, 0)
         b = gt_boxes[i,:]
-        im = box_label(im, b, labels=labels[classes[i]], color=col, box_thick=4)
+        im = box_label(im, b, label=labels[classes[i]], color=col, box_thick=4)
       cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
 
       # Save images with annotated predicted labels
