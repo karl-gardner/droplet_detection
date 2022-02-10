@@ -165,6 +165,7 @@ def save_results(images_path, yolo, model):
       im = np.copy(input_im)
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
-        im = box_label(im, b, labels[pred_classes[i]] + ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+        im = box_label(im, b, labels[pred_classes[i]][5] + ' ' + labels[pred_classes[i]][6:10] + 
+                       ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
       cv2.imwrite('/test_results/preds/' + f[:-4] + '.png',im)
 
