@@ -87,7 +87,7 @@ def save_results(images_path):
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
     pred_file = "runs/detect/exp/"+f
-    label_file = images_path + '../labels/' + f[0:-4] + '.txt'
+    label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
 
     with open(label_file) as lab:
       lines = lab.readlines()
