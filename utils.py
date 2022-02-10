@@ -2,7 +2,7 @@ import os
 
 # Print and return images and labels
 def count_labels(label_path = None, set = None):
-  if path == None:
+  if label_path == None:
     print("Pass a file as an argument")
     pass
   else:
