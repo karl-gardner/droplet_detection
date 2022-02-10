@@ -1,6 +1,7 @@
 import os
 import cv2
 import numpy as np
+import copy
 
 # Print and return images and labels in a list format
 def drop_labels(label_path = None, set = None):
@@ -132,7 +133,8 @@ def save_results(images_path):
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
-
+    
+    im = copy.deepcopy(input_im)
     for i in range(gt_boxes.shape[0]):
       lab = "cell"
       col = (0,0,255)
