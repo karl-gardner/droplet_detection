@@ -132,7 +132,7 @@ def save_results(images_path, yolo):
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
-        conf[i] = float(line[5])
+        conf.append(float(line[5]))
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
     # Save images with annotated ground truth labels
