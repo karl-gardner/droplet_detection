@@ -141,7 +141,7 @@ def save_results(images_path, yolo):
       im = box_label(im, b, lab, col)
     cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
     
-    for i in range(gt_boxes.shape[0]):
+    for i in range(pred_boxes.shape[0]):
       lab = "cell"
       col = (0,0,255)
       b = pred_boxes[i,:]
