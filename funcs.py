@@ -55,3 +55,75 @@ def cell_labels(label_path = None, set = None):
     print("images: " + str(images) + '\n')
     
     return [cell, images]
+  
+  
+  
+  
+  
+  
+  
+def box_label(box, label='', color=(128, 128, 128), txt_color=(255, 255, 255)):
+  # Add one xyxy box to image with label
+  p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
+  cv2.rectangle(im, p1, p2, color, thickness=self.lw, lineType=cv2.LINE_AA)
+  if label:
+      tf = max(self.lw - 1, 1)  # font thickness
+      w, h = cv2.getTextSize(label, 0, fontScale=self.lw / 3, thickness=tf)[0]  # text width, height
+      outside = p1[1] - h - 3 >= 0  # label fits outside box
+      p2 = p1[0] + w, p1[1] - h - 3 if outside else p1[1] + h + 3
+      cv2.rectangle(im, p1, p2, color, -1, cv2.LINE_AA)  # filled
+      cv2.putText(self.im, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, self.lw / 3, txt_color,
+                  thickness=tf, lineType=cv2.LINE_AA)
+      
+      
+      
+      
+def save_results(images_path):
+  !rm -r /test_results
+  !mkdir /test_results
+  !mkdir /test_results/gt_vs_pred
+  !mkdir /test_results/inputs
+  !mkdir /test_results/preds
+  
+  for count, f in enumerate(os.listdir(images_path)):
+    im_file = images_path+'/'+f
+    pred_file = "runs/detect/exp/"+f
+    label_file = images_path + '../labels/' + f[0:-4] + '.txt'
+
+    with open(label_file) as lab:
+      lines = lab.readlines()
+      rows = len(lines)
+      boxes = np.zeros((rows,4))
+      classes = []
+      for i, line in enumerate(lines):
+        print(line)
+#         line = line.split()
+#         classes.append(int(line[0]))
+#         boxes[i,0] = float(line[1])
+#         boxes[i,1] = float(line[2])
+#         boxes[i,2] = float(line[3])
+#         boxes[i,3] = float(line[4])
+#     boxes = xywhn2xyxy(boxes, w=544, h=544)
+
+#     im = cv2.imread(im_file)
+#     cv2.imwrite("/test_results/inputs/"+f[:-4]+".png", im)
+#     gt_vs_pred_im = np.zeros((im.shape[0]+6*2,im.shape[1]*2+6*3,3))
+#     for i in range(boxes.shape[0]):
+#       class_label = classes[i]
+#       if class_label == 0:
+#         lab = "drop_0cell"
+#         col = (0,0,255)
+#       elif class_label == 1:
+#         lab = "drop_1cell"
+#         col = (0,255,255)
+#       elif class_label == 2:
+#         lab = "drop_2cell"
+#         col = (255,0,127)
+#       else:
+#         lab = "drop_3cell"
+#         col = (255,0,255)
+#       b = boxes[i,:]
+#       box_label(b,lab,col)
+#     gt_vs_pred_im[6 : 544 + 6, 6 : 544 + 6, :] = im
+  
+
