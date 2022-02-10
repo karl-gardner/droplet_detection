@@ -89,7 +89,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     return y
       
       
-def save_results(images_path):
+def save_results(images_path, yolo):
   os.mkdir('/test_results')
   os.mkdir('/test_results/gt_vs_pred')
   os.mkdir('/test_results/inputs')
@@ -98,7 +98,7 @@ def save_results(images_path):
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
-    pred_file = "runs/detect/exp/"+f
+    pred_file = yolo + 'runs/detect/exp/' + f[0:-4] + '.txt'
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
     
     input_im = cv2.imread(im_file)
@@ -134,7 +134,7 @@ def save_results(images_path):
         boxes[i,3] = float(line[4])
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
-#     im = np.copy(input_im)
+    im = np.copy(input_im)
 #     for i in range(gt_boxes.shape[0]):
 #       lab = "cell"
 #       col = (0,0,255)
