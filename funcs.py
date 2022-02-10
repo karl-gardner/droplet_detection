@@ -97,7 +97,7 @@ def save_results(images_path, yolo):
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
-    pred_file = yolo + '/runs/detect/exp/' + f[0:-4] + '.txt'
+    pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
     
     input_im = cv2.imread(im_file)
