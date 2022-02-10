@@ -1,7 +1,6 @@
 import os
 import cv2
 import numpy as np
-import copy
 
 # Print and return images and labels in a list format
 def drop_labels(label_path = None, set = None):
@@ -98,7 +97,7 @@ def save_results(images_path, yolo):
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
-    pred_file = yolo + 'runs/detect/exp/' + f[0:-4] + '.txt'
+    pred_file = yolo + '/runs/detect/exp/' + f[0:-4] + '.txt'
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
     
     input_im = cv2.imread(im_file)
@@ -120,7 +119,7 @@ def save_results(images_path, yolo):
     gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
     # Save boxes with predicted labels in numpy array
-    with open(yolo + '/' + pred_file) as lab:
+    with open(pred_file) as lab:
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
