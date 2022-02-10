@@ -139,7 +139,6 @@ def save_results(images_path, yolo, model):
       # Save images with annotated ground truth labels
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
-        lab = "cell"
         col = (0, 255, 0)
         b = gt_boxes[i,:]
         im = box_label(im, b, color=col, box_thick=4)
@@ -155,19 +154,18 @@ def save_results(images_path, yolo, model):
       
     if model == 'droplet':
       # Save images with annotated ground truth labels
+      labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
-        lab = "cell"
         col = (0, 255, 0)
         b = gt_boxes[i,:]
-        im = box_label(im, b, color=col, box_thick=4)
+        im = box_label(im, b, labels=labels[classes[i]], color=col, box_thick=4)
       cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
 
       # Save images with annotated predicted labels
       for i in range(pred_boxes.shape[0]):
-        lab = "cell %.2f" % conf[i]
         col = (0, 0, 255)
         b = pred_boxes[i,:]
-        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2)
+        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], col, box_thick=3, fontsize=1.2)
       cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
