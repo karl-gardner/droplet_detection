@@ -1,5 +1,5 @@
 import os
-
+print("this works, hello")
 # Print and return images and labels
 def count_labels(label_path = None, set = None):
   if label_path == None:
@@ -29,4 +29,4 @@ def count_labels(label_path = None, set = None):
     print("combined: " + str(zero_cell + one_cell + two_cell + three_cell))
     
     return (zero_cell, one_cell, two_cell, three_cell)
-print("this works, hello")
+
