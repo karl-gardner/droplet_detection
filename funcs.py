@@ -64,17 +64,17 @@ def cell_labels(label_path = None, set = None):
   
   
   
-def box_label(box, label='', color=(128, 128, 128), txt_color=(255, 255, 255)):
+def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255)):
   # Add one xyxy box to image with label
   p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
-  cv2.rectangle(im, p1, p2, color, thickness=self.lw, lineType=cv2.LINE_AA)
+  cv2.rectangle(image, p1, p2, color, thickness=1, lineType=cv2.LINE_AA)
   if label:
-      tf = max(self.lw - 1, 1)  # font thickness
-      w, h = cv2.getTextSize(label, 0, fontScale=self.lw / 3, thickness=tf)[0]  # text width, height
+      tf = max(1, 1)  # font thickness
+      w, h = cv2.getTextSize(label, 0, fontScale=1 / 3, thickness=tf)[0]  # text width, height
       outside = p1[1] - h - 3 >= 0  # label fits outside box
       p2 = p1[0] + w, p1[1] - h - 3 if outside else p1[1] + h + 3
-      cv2.rectangle(im, p1, p2, color, -1, cv2.LINE_AA)  # filled
-      cv2.putText(self.im, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, self.lw / 3, txt_color,
+      cv2.rectangle(image, p1, p2, color, -1, cv2.LINE_AA)  # filled
+      cv2.putText(image, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, self.lw / 3, txt_color,
                   thickness=tf, lineType=cv2.LINE_AA)
       
 def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
@@ -118,7 +118,7 @@ def save_results(images_path):
       lab = "cell"
       col = (0,0,255)
       b = boxes[i,:]
-      box_label(b,lab,col)
+      im = box_label(im, b,lab,col)
     cv2.imwrite('/test_results/gt_vs_pred' + f[:-4] + '.png',im)
   
 
