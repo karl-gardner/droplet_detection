@@ -76,6 +76,7 @@ def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 
       cv2.rectangle(image, p1, p2, color, -1, cv2.LINE_AA)  # filled
       cv2.putText(image, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, 1 / 3, txt_color,
                   thickness=tf, lineType=cv2.LINE_AA)
+  return image
       
 def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     # Convert nx4 boxes from [x, y, w, h] normalized to [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
