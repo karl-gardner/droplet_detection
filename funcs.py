@@ -139,7 +139,7 @@ def save_results(images_path, yolo):
     im = np.copy(input_im)
     for i in range(gt_boxes.shape[0]):
       lab = "cell"
-      col = (0,0,0)
+      col = (0, 255, 0)
       b = gt_boxes[i,:]
       im = box_label(im, b, color=col, box_thick=5)
     cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
