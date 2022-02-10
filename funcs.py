@@ -124,6 +124,7 @@ def save_results(images_path, yolo):
       rows = len(lines)
       boxes = np.zeros((rows,4))
       classes = []
+      conf = []
       for i, line in enumerate(lines):
         line = line.split()
         classes.append(int(line[0]))
@@ -131,6 +132,7 @@ def save_results(images_path, yolo):
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
+        conf[i] = float(line[5])
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
     # Save images with annotated ground truth labels
@@ -139,14 +141,14 @@ def save_results(images_path, yolo):
       lab = "cell"
       col = (0,0,0)
       b = gt_boxes[i,:]
-      im = box_label(im, b, color=col, box_thick=3)
+      im = box_label(im, b, color=col, box_thick=4)
     cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
     
     # Save images with annotated predicted labels
     for i in range(pred_boxes.shape[0]):
-      lab = "cell"
+      lab = "cell %.2f" % conf[i]
       col = (0, 0, 255)
       b = pred_boxes[i,:]
-      im = box_label(im, b, lab, col)
+      im = box_label(im, b, lab, col, box_thick=2)
     cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
