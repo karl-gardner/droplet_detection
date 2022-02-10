@@ -107,10 +107,10 @@ def save_results(images_path, yolo, model):
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
-      classes = []
+      gt_classes = []
       for i, line in enumerate(lines):
         line = line.split()
-        classes.append(int(line[0]))
+        gt_classes.append(int(line[0]))
         boxes[i,0] = float(line[1])
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
@@ -122,11 +122,11 @@ def save_results(images_path, yolo, model):
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
-      classes = []
+      pred_classes = []
       conf = []
       for i, line in enumerate(lines):
         line = line.split()
-        classes.append(int(line[0]))
+        pred_classes.append(int(line[0]))
         boxes[i,0] = float(line[1])
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
@@ -158,13 +158,13 @@ def save_results(images_path, yolo, model):
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
-        im = box_label(im, b, label=labels[classes[i]], color=colors[classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
+        im = box_label(im, b, label=labels[gt_classes[i]], color=colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
       cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
       
       # Save images with annotated predicted labels
       im = np.copy(input_im)
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
-        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], color=colors[classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+        im = box_label(im, b, labels[pred_classes[i]] + ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
       cv2.imwrite('/test_results/preds/' + f[:-4] + '.png',im)
 
