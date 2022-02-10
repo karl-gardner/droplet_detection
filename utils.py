@@ -29,3 +29,4 @@ def count_labels(label_path = None, set = None):
     print("combined: " + str(zero_cell + one_cell + two_cell + three_cell))
     
     return (zero_cell, one_cell, two_cell, three_cell)
+print("this works, hello")
