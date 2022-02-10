@@ -70,7 +70,7 @@ def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 
   cv2.rectangle(image, p1, p2, color, thickness=box_thick, lineType=cv2.LINE_AA)
   if label:
       tf = max(1, 1)  # font thickness
-      w, h = cv2.getTextSize(label, 0, fontScale=1 / 3, thickness=tf)[0]  # text width, height
+      w, h = cv2.getTextSize(label, 0, fontScale=5, thickness=tf)[0]  # text width, height
       outside = p1[1] - h - 3 >= 0  # label fits outside box
       p2 = p1[0] + w, p1[1] - h - 3 if outside else p1[1] + h + 3
       cv2.rectangle(image, p1, p2, color, -1, cv2.LINE_AA)  # filled
