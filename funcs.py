@@ -26,8 +26,6 @@ def count_labels(label_path = None, set = None):
     print("drop_1cell: " + str(one_cell))
     print("drop_2cell: " + str(two_cell))
     print("drop_3cell: " + str(three_cell))
-    print("combined: " + str(zero_cell + one_cell + two_cell + three_cell))
+    print("combined: " + str(zero_cell + one_cell + two_cell + three_cell) + '\n')
     
     return (zero_cell, one_cell, two_cell, three_cell)
-
-print("this works, hello")
