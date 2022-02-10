@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 # Print and return images and labels in a list format
 def drop_labels(label_path = None, set = None):
