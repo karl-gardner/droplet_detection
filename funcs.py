@@ -79,11 +79,10 @@ def box_label(box, label='', color=(128, 128, 128), txt_color=(255, 255, 255)):
       
       
 def save_results(images_path):
-  !rm -r /test_results
-  !mkdir /test_results
-  !mkdir /test_results/gt_vs_pred
-  !mkdir /test_results/inputs
-  !mkdir /test_results/preds
+  os.mkdir('/test_results')
+  os.mkdir('/test_results/gt_vs_pred')
+  os.mkdir('/test_results/inputs')
+  os.mkdir('/test_results/preds')
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
