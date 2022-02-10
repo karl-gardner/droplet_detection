@@ -64,7 +64,7 @@ def cell_labels(label_path = None, set = None):
   
   
   
-def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick):
+def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1):
   # Add one xyxy box to image with label
   p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
   cv2.rectangle(image, p1, p2, color, thickness=box_thick, lineType=cv2.LINE_AA)
