@@ -158,13 +158,13 @@ def save_results(images_path, yolo, model):
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
-        im = box_label(im, b, label=labels[classes[i]], color=colors[classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.6, tf=1)
+        im = box_label(im, b, label=labels[classes[i]], color=colors[classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
       cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
       
       # Save images with annotated predicted labels
       im = np.copy(input_im)
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
-        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], color=colors[classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.6, tf =1)
+        im = box_label(im, b, labels[classes[i]] + ' %.2f' % conf[i], color=colors[classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
       cv2.imwrite('/test_results/preds/' + f[:-4] + '.png',im)
 
