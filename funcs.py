@@ -64,10 +64,10 @@ def cell_labels(label_path = None, set = None):
   
   
   
-def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255)):
+def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick):
   # Add one xyxy box to image with label
   p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
-  cv2.rectangle(image, p1, p2, color, thickness=1, lineType=cv2.LINE_AA)
+  cv2.rectangle(image, p1, p2, color, thickness=box_thick, lineType=cv2.LINE_AA)
   if label:
       tf = max(1, 1)  # font thickness
       w, h = cv2.getTextSize(label, 0, fontScale=1 / 3, thickness=tf)[0]  # text width, height
@@ -133,17 +133,19 @@ def save_results(images_path, yolo):
         boxes[i,3] = float(line[4])
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
+    # Save images with annotated ground truth labels
     im = np.copy(input_im)
     for i in range(gt_boxes.shape[0]):
       lab = "cell"
       col = (0,0,255)
       b = gt_boxes[i,:]
-      im = box_label(im, b, lab, col)
+      im = box_label(im, b, color=col, box_thick=3)
     cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
     
+    # Save images with annotated predicted labels
     for i in range(pred_boxes.shape[0]):
       lab = "cell"
-      col = (0,0,255)
+      col = (255,255,255)
       b = pred_boxes[i,:]
       im = box_label(im, b, lab, col)
     cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
