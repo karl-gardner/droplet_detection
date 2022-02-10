@@ -134,17 +134,17 @@ def save_results(images_path, yolo):
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
     im = np.copy(input_im)
-#     for i in range(gt_boxes.shape[0]):
-#       lab = "cell"
-#       col = (0,0,255)
-#       b = gt_boxes[i,:]
-#       im = box_label(im, b, lab, col)
-#     cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+    for i in range(gt_boxes.shape[0]):
+      lab = "cell"
+      col = (0,0,255)
+      b = gt_boxes[i,:]
+      im = box_label(im, b, lab, col)
+    cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
     
-#     for i in range(gt_boxes.shape[0]):
-#       lab = "cell"
-#       col = (0,0,255)
-#       b = pred_boxes[i,:]
-#       im = box_label(im, b, lab, col)
-#     cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
+    for i in range(gt_boxes.shape[0]):
+      lab = "cell"
+      col = (0,0,255)
+      b = pred_boxes[i,:]
+      im = box_label(im, b, lab, col)
+    cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
