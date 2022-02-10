@@ -27,6 +27,6 @@ def drop_labels(label_path = None, set = None):
     print("drop_2cell: " + str(two_cell))
     print("drop_3cell: " + str(three_cell))
     print("combined: " + str(zero_cell + one_cell + two_cell + three_cell))
-    print("images: " + str(images))
+    print("images: " + str(images) + '\n')
     
     return (zero_cell, one_cell, two_cell, three_cell)
