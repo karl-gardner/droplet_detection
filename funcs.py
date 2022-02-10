@@ -88,7 +88,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     return y
       
       
-def save_results(images_path, yolo):
+def save_results(images_path, yolo, model):
   os.mkdir('/test_results')
   os.mkdir('/test_results/gt_vs_pred')
   os.mkdir('/test_results/inputs')
@@ -135,20 +135,39 @@ def save_results(images_path, yolo):
         conf.append(float(line[5]))
     pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
-    # Save images with annotated ground truth labels
-    im = np.copy(input_im)
-    for i in range(gt_boxes.shape[0]):
-      lab = "cell"
-      col = (0, 255, 0)
-      b = gt_boxes[i,:]
-      im = box_label(im, b, color=col, box_thick=4)
-    cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
-    
-    # Save images with annotated predicted labels
-    for i in range(pred_boxes.shape[0]):
-      lab = "cell %.2f" % conf[i]
-      col = (0, 0, 255)
-      b = pred_boxes[i,:]
-      im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2)
-    cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
+    if model == 'cell':
+      # Save images with annotated ground truth labels
+      im = np.copy(input_im)
+      for i in range(gt_boxes.shape[0]):
+        lab = "cell"
+        col = (0, 255, 0)
+        b = gt_boxes[i,:]
+        im = box_label(im, b, color=col, box_thick=4)
+      cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+
+      # Save images with annotated predicted labels
+      for i in range(pred_boxes.shape[0]):
+        lab = "cell %.2f" % conf[i]
+        col = (0, 0, 255)
+        b = pred_boxes[i,:]
+        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2)
+      cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
+      
+    if model == 'droplet':
+      # Save images with annotated ground truth labels
+      im = np.copy(input_im)
+      for i in range(gt_boxes.shape[0]):
+        lab = "cell"
+        col = (0, 255, 0)
+        b = gt_boxes[i,:]
+        im = box_label(im, b, color=col, box_thick=4)
+      cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+
+      # Save images with annotated predicted labels
+      for i in range(pred_boxes.shape[0]):
+        lab = "cell %.2f" % conf[i]
+        col = (0, 0, 255)
+        b = pred_boxes[i,:]
+        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2)
+      cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
 
