@@ -1,7 +1,7 @@
 import os
 
 # Print and return images and labels
-def count_labels(label_path = None, set = None):
+def count_droplet_labels(label_path = None, set = None):
   if label_path == None:
     print("Pass a file as an argument")
     pass
