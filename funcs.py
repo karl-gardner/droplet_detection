@@ -120,7 +120,7 @@ def save_results(images_path, yolo):
     gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
     
     # Save boxes with predicted labels in numpy array
-    with open("yolov3/" + pred_file) as lab:
+    with open(yolo + '/' + pred_file) as lab:
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
