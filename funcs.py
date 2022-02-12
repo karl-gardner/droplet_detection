@@ -154,7 +154,7 @@ def save_results(images_path, yolo, model):
     if model == 'droplet':
       # Save images with annotated ground truth labels
       labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
-      colors = [(0,0,255), (0,255,255), (255,0,127), (255,0,255)]
+      colors = [(0,0,255), (0,255,255), (0,255, 255), (255,0,255)]
       im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
