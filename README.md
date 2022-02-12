@@ -1,4 +1,7 @@
 # Droplet Detection Model
+
+![ttu_chemical](https://user-images.githubusercontent.com/91646805/153727837-8ea5b6ea-ddcd-4a4b-8c2f-9230bc7316dc.jpeg)
+
 Real time detection of cell encapsulation for Poisson distribution analysis and cell visualization with YOLOv3 and YOLOv5
 
 ![experimental_workflow](https://user-images.githubusercontent.com/91646805/148269422-758ea029-7165-4259-98b7-d89a26e66361.png)
