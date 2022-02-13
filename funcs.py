@@ -96,13 +96,13 @@ def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/label_results/gts')
   
   # Save images with annotated ground truth labels
-  if model = 'droplet':
+  if model == 'droplet':
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     pred_labels = ['0 cell', '1 cell', '2 cell', '3 cell']
     gt_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
     pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
   
-  if model = 'cell':
+  if model == 'cell':
     labels = ['cell']
     pred_labels = ['cell']
     gt_colors = [(0, 255, 0)]
@@ -167,12 +167,12 @@ def save_labels(images_path, model, yolo='yolov3'):
       im = np.copy(input_im)
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
-        if model = 'droplet':
+        if model == 'droplet':
           im = box_label(im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
                          txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
           gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
                          txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-        if model = 'cell':
+        if model == 'cell':
           im = box_label(im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
           gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
       
