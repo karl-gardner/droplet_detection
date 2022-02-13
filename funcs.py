@@ -88,9 +88,9 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
       
 def save_labels(images_path, model, yolo='yolov3'):
-  os.mkdir('/results')
-  os.mkdir('/results/inputs')
-  os.mkdir('/results/gts')
+  os.mkdir('/label_results')
+  os.mkdir('/label_results/inputs')
+  os.mkdir('/label_results/gts')
   
   
   
@@ -100,7 +100,7 @@ def save_labels(images_path, model, yolo='yolov3'):
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
     
     input_im = cv2.imread(im_file)
-    cv2.imwrite('/test_results/inputs/' + f[:-4] + '.png', input_im)
+    cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
     
     # Save boxes with ground thruth labels in numpy array
     with open(label_file) as lab:
@@ -124,7 +124,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         col = (0, 255, 0)
         b = gt_boxes[i,:]
         im = box_label(im, b, color=col, box_thick=4)
-      cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+      cv2.imwrite('/label_results/gts/' + f[:-4] + '.png',im)
 
       # Save images with annotated predicted labels
       for i in range(pred_boxes.shape[0]):
@@ -132,7 +132,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         col = (0, 0, 255)
         b = pred_boxes[i,:]
         im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2, tf=4)
-      cv2.imwrite('/test_results/gt_vs_pred/' + f[:-4] + '.png',im)
+      cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png',im)
       
     if model == 'droplet':
       # Save images with annotated ground truth labels
@@ -142,7 +142,7 @@ def save_labels(images_path, model, yolo='yolov3'):
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
         im = box_label(im, b, label=labels[gt_classes[i]], color=colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
-      cv2.imwrite('/results/gts/' + f[:-4] + '.png',im)
+      cv2.imwrite('/label_results/gts/' + f[:-4] + '.png',im)
       
       
       try:
@@ -151,8 +151,8 @@ def save_labels(images_path, model, yolo='yolov3'):
       except:
         pass
       else:  
-        os.mkdir('/results/preds')
-        os.mkdir('/results/gt_vs_pred')
+        os.mkdir('/label_results/preds')
+        os.mkdir('/label_results/gt_vs_pred')
         lines = lab.readlines()
         rows = len(lines)
         boxes = np.zeros((rows,4))
@@ -174,4 +174,4 @@ def save_labels(images_path, model, yolo='yolov3'):
           b = pred_boxes[i,:]
           im = box_label(im, b, labels[pred_classes[i]][5] + ' ' + labels[pred_classes[i]][6:10] + 
                          ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-        cv2.imwrite('/results/preds/' + f[:-4] + '.png',im)
+        cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',im)
