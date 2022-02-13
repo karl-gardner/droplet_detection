@@ -86,15 +86,17 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     y[:, 3] = h * (x[:, 1] + x[:, 3] / 2) + padh  # bottom right y
     return y
       
-      
+
+    
+    
+    
 def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   os.mkdir('/label_results/gts')
   
-  
-  
   for count, f in enumerate(os.listdir(images_path)):
+    print("count: ",count)
     im_file = images_path+'/'+f
     pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
@@ -147,12 +149,14 @@ def save_labels(images_path, model, yolo='yolov3'):
       
       try:
         # Save boxes with predicted labels in numpy array
-        lab = open(pred_file)     
+        lab = open(pred_file)
       except:
-        pass
-      else:  
-        os.mkdir('/label_results/preds')
-        os.mkdir('/label_results/gt_vs_pred')
+        if count == 0:
+          print("no predections for these images")
+      else:
+        if count == 0:
+          os.mkdir('/label_results/preds')
+          os.mkdir('/label_results/gt_vs_pred')
         lines = lab.readlines()
         rows = len(lines)
         boxes = np.zeros((rows,4))
