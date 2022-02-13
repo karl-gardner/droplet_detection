@@ -89,7 +89,6 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
 def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/results')
-  os.mkdir('/results/gt_vs_pred')
   os.mkdir('/results/inputs')
   os.mkdir('/results/gts')
   
@@ -153,6 +152,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         pass
       else:  
         os.mkdir('/results/preds')
+        os.mkdir('/results/gt_vs_pred')
         lines = lab.readlines()
         rows = len(lines)
         boxes = np.zeros((rows,4))
