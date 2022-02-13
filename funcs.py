@@ -103,7 +103,6 @@ def save_labels(images_path, model, yolo='yolov3'):
     pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
   
   if model == 'cell':
-    gt_labels = ['cell']
     pred_labels = ['cell']
     gt_colors = [(0, 255, 0)]
     pred_colors = [(0, 0, 255)]
@@ -136,9 +135,9 @@ def save_labels(images_path, model, yolo='yolov3'):
     gt_im = np.copy(input_im)
     for i in range(gt_boxes.shape[0]):
       b = gt_boxes[i,:]
-      if model = 'droplet':
+      if model == 'droplet':
         gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
-      if model = 'cell':
+      if model == 'cell':
         gt_im = box_label(gt_im, b, color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=4, fontsize=0.55, tf=1)
 
     # Now save ground truth images
