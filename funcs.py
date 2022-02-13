@@ -150,7 +150,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         # Save boxes with predicted labels in numpy array
         lab = open(pred_file)     
       except:
-        print("no predicted labels only ground truths")
+        pass
       else:  
         os.mkdir('/results/preds')
         lines = lab.readlines()
