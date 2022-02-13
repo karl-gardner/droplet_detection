@@ -87,12 +87,13 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     return y
       
       
-def save_results(images_path, yolo, model):
-  os.mkdir('/test_results')
-  os.mkdir('/test_results/gt_vs_pred')
-  os.mkdir('/test_results/inputs')
-  os.mkdir('/test_results/gts')
-  os.mkdir('/test_results/preds')
+def save_labels(images_path, model, yolo='yolov3'):
+  os.mkdir('/results')
+  os.mkdir('/results/gt_vs_pred')
+  os.mkdir('/results/inputs')
+  os.mkdir('/results/gts')
+  
+  
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
@@ -116,24 +117,7 @@ def save_results(images_path, yolo, model):
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
     gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
-    
-    # Save boxes with predicted labels in numpy array
-    with open(pred_file) as lab:
-      lines = lab.readlines()
-      rows = len(lines)
-      boxes = np.zeros((rows,4))
-      pred_classes = []
-      conf = []
-      for i, line in enumerate(lines):
-        line = line.split()
-        pred_classes.append(int(line[0]))
-        boxes[i,0] = float(line[1])
-        boxes[i,1] = float(line[2])
-        boxes[i,2] = float(line[3])
-        boxes[i,3] = float(line[4])
-        conf.append(float(line[5]))
-    pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
-    
+     
     if model == 'cell':
       # Save images with annotated ground truth labels
       im = np.copy(input_im)
@@ -159,13 +143,35 @@ def save_results(images_path, yolo, model):
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
         im = box_label(im, b, label=labels[gt_classes[i]], color=colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
-      cv2.imwrite('/test_results/gts/' + f[:-4] + '.png',im)
+      cv2.imwrite('/results/gts/' + f[:-4] + '.png',im)
       
-      # Save images with annotated predicted labels
-      im = np.copy(input_im)
-      for i in range(pred_boxes.shape[0]):
-        b = pred_boxes[i,:]
-        im = box_label(im, b, labels[pred_classes[i]][5] + ' ' + labels[pred_classes[i]][6:10] + 
-                       ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-      cv2.imwrite('/test_results/preds/' + f[:-4] + '.png',im)
-
+      
+      try:
+        # Save boxes with predicted labels in numpy array
+        lab = open(pred_file)     
+      except:
+        print("no predicted labels only ground truths")
+      else:  
+        os.mkdir('/results/preds')
+        lines = lab.readlines()
+        rows = len(lines)
+        boxes = np.zeros((rows,4))
+        pred_classes = []
+        conf = []
+        for i, line in enumerate(lines):
+          line = line.split()
+          pred_classes.append(int(line[0]))
+          boxes[i,0] = float(line[1])
+          boxes[i,1] = float(line[2])
+          boxes[i,2] = float(line[3])
+          boxes[i,3] = float(line[4])
+          conf.append(float(line[5]))
+        lab.close()
+        pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
+        # Save images with annotated predicted labels
+        im = np.copy(input_im)
+        for i in range(pred_boxes.shape[0]):
+          b = pred_boxes[i,:]
+          im = box_label(im, b, labels[pred_classes[i]][5] + ' ' + labels[pred_classes[i]][6:10] + 
+                         ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+        cv2.imwrite('/results/preds/' + f[:-4] + '.png',im)
