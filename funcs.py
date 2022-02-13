@@ -144,6 +144,7 @@ def save_labels(images_path, model, yolo='yolov3'):
 
     try:
       # Save boxes with predicted labels in numpy array
+      print("pred_file: ", pred_file)
       lab = open(pred_file)
     except:
       if count == 0:
