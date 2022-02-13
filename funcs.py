@@ -95,6 +95,19 @@ def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/label_results/inputs')
   os.mkdir('/label_results/gts')
   
+  # Save images with annotated ground truth labels
+  if model = 'droplet':
+    gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
+    pred_labels = ['0 cell', '1 cell', '2 cell', '3 cell']
+    gt_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+    pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+  
+  if model = 'cell':
+    labels = ['cell']
+    pred_labels = ['cell']
+    gt_colors = [(0, 255, 0)]
+    pred_colors = [(0, 0, 255)]
+  
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
     pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
@@ -117,63 +130,52 @@ def save_labels(images_path, model, yolo='yolov3'):
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
     gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
-     
-    if model == 'cell':
-      # Save images with annotated ground truth labels
-      im = np.copy(input_im)
-      for i in range(gt_boxes.shape[0]):
-        col = (0, 255, 0)
-        b = gt_boxes[i,:]
-        im = box_label(im, b, color=col, box_thick=4)
-      cv2.imwrite('/label_results/gts/' + f[:-4] + '.png',im)
+    
+    gt_im = np.copy(input_im)
+    for i in range(gt_boxes.shape[0]):
+      b = gt_boxes[i,:]
+      gt_im = box_label(im, b, label=labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
+    cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
 
-      # Save images with annotated predicted labels
-      for i in range(pred_boxes.shape[0]):
-        lab = "cell %.2f" % conf[i]
-        col = (0, 0, 255)
-        b = pred_boxes[i,:]
-        im = box_label(im, b, lab, col, box_thick=3, fontsize=1.2, tf=4)
-      cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png',im)
+    try:
+      # Save boxes with predicted labels in numpy array
+      lab = open(pred_file)
+    except:
+      if count == 0:
+        print("no predections for these images")
+    else:
+      if count == 0:
+        os.mkdir('/label_results/preds')
+        os.mkdir('/label_results/gt_vs_pred')
+      lines = lab.readlines()
+      rows = len(lines)
+      boxes = np.zeros((rows,4))
+      pred_classes = []
+      conf = []
+      for i, line in enumerate(lines):
+        line = line.split()
+        pred_classes.append(int(line[0]))
+        boxes[i,0] = float(line[1])
+        boxes[i,1] = float(line[2])
+        boxes[i,2] = float(line[3])
+        boxes[i,3] = float(line[4])
+        conf.append(float(line[5]))
+      lab.close()
+      pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
       
-    if model == 'droplet':
-      # Save images with annotated ground truth labels
-      labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
-      colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+      # Save images with annotated predicted labels
       im = np.copy(input_im)
-      for i in range(gt_boxes.shape[0]):
-        b = gt_boxes[i,:]
-        im = box_label(im, b, label=labels[gt_classes[i]], color=colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
-      cv2.imwrite('/label_results/gts/' + f[:-4] + '.png',im)
-            
-      try:
-        # Save boxes with predicted labels in numpy array
-        lab = open(pred_file)
-      except:
-        if count == 0:
-          print("no predections for these images")
-      else:
-        if count == 0:
-          os.mkdir('/label_results/preds')
-          os.mkdir('/label_results/gt_vs_pred')
-        lines = lab.readlines()
-        rows = len(lines)
-        boxes = np.zeros((rows,4))
-        pred_classes = []
-        conf = []
-        for i, line in enumerate(lines):
-          line = line.split()
-          pred_classes.append(int(line[0]))
-          boxes[i,0] = float(line[1])
-          boxes[i,1] = float(line[2])
-          boxes[i,2] = float(line[3])
-          boxes[i,3] = float(line[4])
-          conf.append(float(line[5]))
-        lab.close()
-        pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
-        # Save images with annotated predicted labels
-        im = np.copy(input_im)
-        for i in range(pred_boxes.shape[0]):
-          b = pred_boxes[i,:]
-          im = box_label(im, b, labels[pred_classes[i]][5] + ' ' + labels[pred_classes[i]][6:10] + 
-                         ' %.2f' % conf[i], color=colors[pred_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-        cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',im)
+      for i in range(pred_boxes.shape[0]):
+        b = pred_boxes[i,:]
+        if model = 'droplet':
+          im = box_label(im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                         txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+          gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                         txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+        if model = 'cell':
+          im = box_label(im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
+          gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
+      
+      cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',im)
+      cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png', gt_im)
+      
