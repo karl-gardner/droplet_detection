@@ -99,8 +99,7 @@ def save_labels(images_path, model, yolo='yolov3'):
   if model == 'droplet':
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     pred_labels = ['0 cell', '1 cell', '2 cell', '3 cell']
-    gt_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
-    pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+    gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
   
   if model == 'cell':
     pred_labels = ['cell']
