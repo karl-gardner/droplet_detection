@@ -96,7 +96,6 @@ def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/label_results/gts')
   
   for count, f in enumerate(os.listdir(images_path)):
-    print("count: ",count)
     im_file = images_path+'/'+f
     pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
     label_file = images_path + '/../labels/' + f[0:-4] + '.txt'
@@ -145,8 +144,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         b = gt_boxes[i,:]
         im = box_label(im, b, label=labels[gt_classes[i]], color=colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png',im)
-      
-      
+            
       try:
         # Save boxes with predicted labels in numpy array
         lab = open(pred_file)
