@@ -98,10 +98,13 @@ def save_labels(images_path, model, yolo='yolov3'):
   # Save images with annotated ground truth labels
   if model == 'droplet':
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
+    gt_box_thick = 1
     pred_labels = ['0 cell', '1 cell', '2 cell', '3 cell']
     gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
   
   if model == 'cell':
+    gt_labels = ['']
+    gt_box_thick = 4
     pred_labels = ['cell']
     gt_colors = [(0, 255, 0)]
     pred_colors = [(0, 0, 255)]
@@ -134,10 +137,7 @@ def save_labels(images_path, model, yolo='yolov3'):
     gt_im = np.copy(input_im)
     for i in range(gt_boxes.shape[0]):
       b = gt_boxes[i,:]
-      if model == 'droplet':
-        gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf=1)
-      if model == 'cell':
-        gt_im = box_label(gt_im, b, color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=4, fontsize=0.55, tf=1)
+      gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
 
     # Now save ground truth images
     cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
