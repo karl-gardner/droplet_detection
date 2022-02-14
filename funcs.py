@@ -137,7 +137,8 @@ def save_labels(images_path, model, yolo='yolov3'):
     gt_im = np.copy(input_im)
     for i in range(gt_boxes.shape[0]):
       b = gt_boxes[i,:]
-      gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+#       gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+      gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
 
     # Now save ground truth images
     cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
