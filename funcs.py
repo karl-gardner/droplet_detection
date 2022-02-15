@@ -172,7 +172,9 @@ def save_labels(images_path, model, yolo='yolov3'):
       try:
         lab = open(pred_file)
       except:
-        print(pred_file + ' has no detections')
+        cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
+        cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',input_im)
+        continue
       else:
         lines = lab.readlines()
         rows = len(lines)
