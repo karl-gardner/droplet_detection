@@ -119,7 +119,13 @@ def save_labels(images_path, model, yolo='yolov3'):
     # First save input images
     cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
     
-    with open(label_file) as lab:
+    # Try block for ground truth labels
+    try:
+      lab = open(label_file)
+    except:
+      if count == 0:
+        print("no ground truth labels for these images")
+    else:
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
@@ -131,18 +137,18 @@ def save_labels(images_path, model, yolo='yolov3'):
         boxes[i,1] = float(line[2])
         boxes[i,2] = float(line[3])
         boxes[i,3] = float(line[4])
-    gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
-    
-    
-    gt_im = np.copy(input_im)
-    for i in range(gt_boxes.shape[0]):
-      b = gt_boxes[i,:]
-      gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
-#       gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.55, tf=1)
-
-    # Now save ground truth images
-    cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
-
+      lab.close()
+      gt_boxes = xywhn2xyxy(boxes, w=544, h=544) 
+      gt_im = np.copy(input_im)
+      for i in range(gt_boxes.shape[0]):
+        b = gt_boxes[i,:]
+        gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+#         gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.55, tf=1)
+  
+      # Now save ground truth images
+      cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
+      
+    # Try block for predicted labels
     try:
       # Save boxes with predicted labels in numpy array
       lab = open(pred_file)
@@ -169,17 +175,19 @@ def save_labels(images_path, model, yolo='yolov3'):
       lab.close()
       pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
       
-      # Now save predicted labels and predicted labels with ground truth labels
+      # Now save (1) predicted labels and (2) predicted labels with ground truth labels
       for i in range(pred_boxes.shape[0]):
         b = pred_boxes[i,:]
         if model == 'droplet':
           input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
                          txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-          gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                         txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+          if gt_im:
+            gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                           txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
         if model == 'cell':
           input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
-          gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
+          if gt_im:
+            gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
       
       # Now save predicted labels
       cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',input_im)
