@@ -148,6 +148,7 @@ def save_labels(images_path, model, yolo='yolov3'):
           boxes[i,3] = float(line[4])
       gt_boxes = xywhn2xyxy(boxes, w=544, h=544)
       all_gt_boxes.append(gt_boxes)
+      all_gt_classes.append(gt_classes)
       
       gt_im = np.copy(input_im)
       for i in range(gt_boxes.shape[0]):
@@ -194,6 +195,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         lab.close()
         pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
         all_pred_boxes.append(pred_boxes)
+        all_pred_classes.append(pred_classes)
 
         pred_im = np.copy(input_im)
         # Now save (1) predicted labels
