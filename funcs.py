@@ -159,7 +159,6 @@ def save_labels(images_path, model, yolo='yolov3'):
       
   # Try block for predicted labels
   try:
-    print("pred_file: ",pred_file)
     lab = open(pred_file)
   except:
     print("no predections for these images")
@@ -170,7 +169,6 @@ def save_labels(images_path, model, yolo='yolov3'):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
       pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
-      print("pred_file: ",pred_file)
       with open(pred_file) as lab:
         lines = lab.readlines()
         rows = len(lines)
@@ -197,7 +195,6 @@ def save_labels(images_path, model, yolo='yolov3'):
 
     cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
     cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
-        
         
   try:
     gt_pred_im = gt_im
