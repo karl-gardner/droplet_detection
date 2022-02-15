@@ -165,12 +165,12 @@ def save_labels(images_path, model, yolo='yolov3'):
     print("no predections for these images")
   else:
     lab.close()
-    print("This goes through try else in predicted")
     os.mkdir('/label_results/preds')
     for f in os.listdir(images_path):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
-      pred_file = yolo + '/runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
+      pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
+      print("pred_file: ",pred_file)
       with open(pred_file) as lab:
         lines = lab.readlines()
         rows = len(lines)
