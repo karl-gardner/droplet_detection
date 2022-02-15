@@ -128,7 +128,7 @@ def save_labels(images_path, model, yolo='yolov3'):
   else:
     lab.close()
     os.mkdir('/label_results/gts')
-    for f in os.listdir(images_path):
+    for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
       gt_file = images_path + '/../labels/' + f[0][0:-4] + '.txt'
@@ -165,7 +165,7 @@ def save_labels(images_path, model, yolo='yolov3'):
   else:
     lab.close()
     os.mkdir('/label_results/preds')
-    for f in os.listdir(images_path):
+    for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
       pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
@@ -198,7 +198,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         for i in range(pred_boxes.shape[0]):
           b = pred_boxes[i,:]
           pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                         txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
+                         txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
 
         cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
         cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
@@ -209,7 +209,7 @@ def save_labels(images_path, model, yolo='yolov3'):
     pass
   else:
     os.mkdir('/label_results/gt_pred')
-    for j, f in emumerate(os.listdir(images_path)):
+    for j, f in emumerate(sorted(os.listdir(images_path))):
       im_file = images_path + '/' + f
       gt_pred_im = cv2.imread(im_file)
       for i in range(all_gt_boxes[j].shape[0]):
