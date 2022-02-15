@@ -169,7 +169,11 @@ def save_labels(images_path, model, yolo='yolov3'):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
       pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
-      with open(pred_file) as lab:
+      try:
+        lab = open(pred_file)
+      except:
+        print(pred_file + ' has no detections')
+      else:
         lines = lab.readlines()
         rows = len(lines)
         boxes = np.zeros((rows,4))
@@ -183,6 +187,7 @@ def save_labels(images_path, model, yolo='yolov3'):
           boxes[i,2] = float(line[3])
           boxes[i,3] = float(line[4])
           conf.append(float(line[5]))
+        lab.close()
         pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
         all_pred_boxes.append(pred_boxes)
 
