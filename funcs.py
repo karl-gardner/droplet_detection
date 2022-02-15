@@ -215,7 +215,8 @@ def save_labels(images_path, model, yolo='yolov3'):
       for i in range(all_gt_boxes[j].shape[0]):
         gt_b = all_gt_boxes[j][i,:]
         gt_pred_im = box_label(gt_im, gt_b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
-
+      
+      for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
         gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
                      txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
