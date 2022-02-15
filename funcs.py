@@ -193,15 +193,15 @@ def save_labels(images_path, model, yolo='yolov3'):
         pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
         all_pred_boxes.append(pred_boxes)
 
-    pred_im = np.copy(input_im)
-    # Now save (1) predicted labels and (2) predicted labels with ground truth labels
-    for i in range(pred_boxes.shape[0]):
-      b = pred_boxes[i,:]
-      pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                     txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
+        pred_im = np.copy(input_im)
+        # Now save (1) predicted labels
+        for i in range(pred_boxes.shape[0]):
+          b = pred_boxes[i,:]
+          pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                         txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
 
-    cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
-    cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
+        cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
+        cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
         
   try:
     gt_pred_im = gt_im
