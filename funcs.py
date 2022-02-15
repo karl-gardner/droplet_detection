@@ -157,65 +157,65 @@ def save_labels(images_path, model, yolo='yolov3'):
       cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
       
-    # Try block for predicted labels
-    try:
-      print("pred_file: ",pred_file)
-      lab = open(pred_file)
-    except:
-      print("no predections for these images")
-    else:
-      lab.close()
-      print("This goes through try else in predicted")
-      os.mkdir('/label_results/preds')
-      for f in os.listdir(images_path):
-        im_file = images_path + '/' + f
-        input_im = cv2.imread(im_file)
-        pred_file = yolo + '/runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
-        with open(pred_file) as lab:
-          lines = lab.readlines()
-          rows = len(lines)
-          boxes = np.zeros((rows,4))
-          pred_classes = []
-          conf = []
-          for i, line in enumerate(lines):
-            line = line.split()
-            pred_classes.append(int(line[0]))
-            boxes[i,0] = float(line[1])
-            boxes[i,1] = float(line[2])
-            boxes[i,2] = float(line[3])
-            boxes[i,3] = float(line[4])
-            conf.append(float(line[5]))
-          pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
-          all_pred_boxes.append(pred_boxes)
-      
-      pred_im = np.copy(input_im)
-      # Now save (1) predicted labels and (2) predicted labels with ground truth labels
-      for i in range(pred_boxes.shape[0]):
-        b = pred_boxes[i,:]
-        pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                       txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
-      
-      cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
-      cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
+  # Try block for predicted labels
+  try:
+    print("pred_file: ",pred_file)
+    lab = open(pred_file)
+  except:
+    print("no predections for these images")
+  else:
+    lab.close()
+    print("This goes through try else in predicted")
+    os.mkdir('/label_results/preds')
+    for f in os.listdir(images_path):
+      im_file = images_path + '/' + f
+      input_im = cv2.imread(im_file)
+      pred_file = yolo + '/runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
+      with open(pred_file) as lab:
+        lines = lab.readlines()
+        rows = len(lines)
+        boxes = np.zeros((rows,4))
+        pred_classes = []
+        conf = []
+        for i, line in enumerate(lines):
+          line = line.split()
+          pred_classes.append(int(line[0]))
+          boxes[i,0] = float(line[1])
+          boxes[i,1] = float(line[2])
+          boxes[i,2] = float(line[3])
+          boxes[i,3] = float(line[4])
+          conf.append(float(line[5]))
+        pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
+        all_pred_boxes.append(pred_boxes)
+
+    pred_im = np.copy(input_im)
+    # Now save (1) predicted labels and (2) predicted labels with ground truth labels
+    for i in range(pred_boxes.shape[0]):
+      b = pred_boxes[i,:]
+      pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                     txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
+
+    cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
+    cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
         
         
-    try:
-      gt_pred_im = gt_im
-    except:
-      pass
-    else:
-      os.mkdir('/label_results/gt_pred')
-      for j, f in emumerate(os.listdir(images_path)):
-        im_file = images_path + '/' + f
-        gt_pred_im = cv2.imread(im_file)
-        for i in range(all_gt_boxes[j].shape[0]):
-          gt_b = all_gt_boxes[j][i,:]
-          gt_pred_im = box_label(gt_im, gt_b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
-          
-          pred_b = all_pred_boxes[j][i,:]
-          gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                       txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
-        cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
+  try:
+    gt_pred_im = gt_im
+  except:
+    pass
+  else:
+    os.mkdir('/label_results/gt_pred')
+    for j, f in emumerate(os.listdir(images_path)):
+      im_file = images_path + '/' + f
+      gt_pred_im = cv2.imread(im_file)
+      for i in range(all_gt_boxes[j].shape[0]):
+        gt_b = all_gt_boxes[j][i,:]
+        gt_pred_im = box_label(gt_im, gt_b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+
+        pred_b = all_pred_boxes[j][i,:]
+        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+                     txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
+      cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
         
         
