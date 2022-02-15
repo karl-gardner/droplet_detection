@@ -121,7 +121,8 @@ def save_labels(images_path, model, yolo='yolov3'):
   all_gt_boxes = []
   all_gt_classes = []
   all_pred_boxes = []
-  all_pred_classes[]
+  all_pred_classes = []
+  all_conf = []
 
   try:
     lab = open(gt_file)
@@ -196,6 +197,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         pred_boxes = xywhn2xyxy(boxes, w=544, h=544)
         all_pred_boxes.append(pred_boxes)
         all_pred_classes.append(pred_classes)
+        all_conf.append(conf)
 
         pred_im = np.copy(input_im)
         # Now save (1) predicted labels
@@ -227,7 +229,7 @@ def save_labels(images_path, model, yolo='yolov3'):
       
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
-        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[all_pred_classes[j][i]] + ' %.2f' % conf[i], color=pred_colors[all_pred_classes[j][i]],
+        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[all_pred_classes[j][i]] + ' %.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
                      txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
