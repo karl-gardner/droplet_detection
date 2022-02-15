@@ -220,12 +220,12 @@ def save_labels(images_path, model, yolo='yolov3'):
         print("gt_labels: ",gt_labels)
         print("gt_colors: ",gt_colors)
         print("gt_classes: ",gt_classes)
-        gt_pred_im = box_label(gt_pred_im, gt_b, label=gt_labels[gt_classes[j][i]], color=gt_colors[gt_classes[j][i]], 
+        gt_pred_im = box_label(gt_pred_im, gt_b, label=gt_labels[all_gt_classes[j][i]], color=gt_colors[all_gt_classes[j][i]], 
                                txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
       
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
-        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[pred_classes[j][i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[j][i]],
+        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[all_pred_classes[j][i]] + ' %.2f' % conf[i], color=pred_colors[all_pred_classes[j][i]],
                      txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
