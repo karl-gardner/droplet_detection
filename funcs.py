@@ -214,16 +214,12 @@ def save_labels(images_path, model, yolo='yolov3'):
   except:
     pass
   else:
-    os.mkdir('/label_results/gt_pred')
+    os.mkdir('/label_results/gt_preds')
     for j, f in enumerate(sorted(os.listdir(images_path))):
       im_file = images_path + '/' + f
       gt_pred_im = cv2.imread(im_file)
       for i in range(all_gt_boxes[j].shape[0]):
         gt_b = all_gt_boxes[j][i,:]
-        print("i: ",i)
-        print("gt_labels: ",gt_labels)
-        print("gt_colors: ",gt_colors)
-        print("gt_classes: ",gt_classes)
         gt_pred_im = box_label(gt_pred_im, gt_b, label=gt_labels[all_gt_classes[j][i]], color=gt_colors[all_gt_classes[j][i]], 
                                txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
       
