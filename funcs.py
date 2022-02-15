@@ -86,8 +86,6 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
     y[:, 3] = h * (x[:, 1] + x[:, 3] / 2) + padh  # bottom right y
     return y
       
-
-    
     
     
 def save_labels(images_path, model, yolo='yolov3'):
@@ -154,7 +152,8 @@ def save_labels(images_path, model, yolo='yolov3'):
 #         gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.55, tf=1)
   
       # Now save ground truth images
-      os.mkdir('/label_results/gts')
+      if count == 0:
+        os.mkdir('/label_results/gts')
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
       
     # Try block for predicted labels
@@ -201,6 +200,7 @@ def save_labels(images_path, model, yolo='yolov3'):
       
       if gt_im:
         # Now save predicted with ground truth labels
-        os.mkdir('/label_results/gt_vs_pred')
+        if count == 0:
+          os.mkdir('/label_results/gt_vs_pred')
         cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png', gt_im)
       
