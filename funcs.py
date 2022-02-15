@@ -159,12 +159,13 @@ def save_labels(images_path, model, yolo='yolov3'):
       
     # Try block for predicted labels
     try:
-      # Save boxes with predicted labels in numpy array
+      print("pred_file: ",pred_file)
       lab = open(pred_file)
     except:
       print("no predections for these images")
     else:
       lab.close()
+      print("This goes through try else in predicted")
       os.mkdir('/label_results/preds')
       for f in os.listdir(images_path):
         im_file = images_path + '/' + f
