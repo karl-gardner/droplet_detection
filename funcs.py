@@ -99,8 +99,12 @@ def save_labels(images_path, model, yolo='yolov3'):
   if model == 'droplet':
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     gt_box_thick = 1
-    pred_labels = ['0 cell', '1 cell', '2 cell', '3 cell']
+    pred_labels = ['', '', '', '']
     gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+    text_color = (0, 0, 0)
+    box_thickness = 1
+    font_size = .55
+    font_thickness = 1
   
   if model == 'cell':
     gt_labels = ['']
@@ -108,6 +112,10 @@ def save_labels(images_path, model, yolo='yolov3'):
     pred_labels = ['cell']
     gt_colors = [(0, 255, 0)]
     pred_colors = [(0, 0, 255)]
+    text_color = (255, 255, 255)
+    box_thickness = 3
+    font_size = 1.2
+    font_thickness = 4
   
   for count, f in enumerate(os.listdir(images_path)):
     im_file = images_path+'/'+f
@@ -181,14 +189,14 @@ def save_labels(images_path, model, yolo='yolov3'):
         b = pred_boxes[i,:]
         if model == 'droplet':
           input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                         txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
+                         txt_color=text_color, box_thick=1, fontsize=font_size, tf =font_thickness)
           if gt_im:
             gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-                           txt_color=(0,0,0), box_thick=1, fontsize=0.55, tf =1)
-        if model == 'cell':
-          input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
-          if gt_im:
-            gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
+                           txt_color=text_color, box_thick=1, fontsize=0.55, tf =font_thickness)
+#         if model == 'cell':
+#           input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
+#           if gt_im:
+#             gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
       
       # Now save predicted labels
       cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',input_im)
