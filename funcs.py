@@ -124,6 +124,7 @@ def save_labels(images_path, model, yolo='yolov3'):
       lab = open(label_file)
     except:
       if count == 0:
+        gt_im = False
         print("no ground truth labels for these images")
     else:
       lines = lab.readlines()
