@@ -131,7 +131,7 @@ def save_labels(images_path, model, yolo='yolov3'):
     for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
-      gt_file = images_path + '/../labels/' + f[0][0:-4] + '.txt'
+      gt_file = images_path + '/../labels/' + f[0:-4] + '.txt'
       with open(gt_file) as lab:
         lines = lab.readlines()
         rows = len(lines)
