@@ -93,7 +93,6 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
 def save_labels(images_path, model, yolo='yolov3'):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
-  os.mkdir('/label_results/gts')
   
   # Save images with annotated ground truth labels
   if model == 'droplet':
@@ -155,6 +154,7 @@ def save_labels(images_path, model, yolo='yolov3'):
 #         gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.55, tf=1)
   
       # Now save ground truth images
+      os.mkdir('/label_results/gts')
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
       
     # Try block for predicted labels
@@ -165,9 +165,6 @@ def save_labels(images_path, model, yolo='yolov3'):
       if count == 0:
         print("no predections for these images")
     else:
-      if count == 0:
-        os.mkdir('/label_results/preds')
-        os.mkdir('/label_results/gt_vs_pred')
       lines = lab.readlines()
       rows = len(lines)
       boxes = np.zeros((rows,4))
@@ -199,7 +196,11 @@ def save_labels(images_path, model, yolo='yolov3'):
 #             gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
       
       # Now save predicted labels
+      os.mkdir('/label_results/preds')
       cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',input_im)
-      # Now save predicted with ground truth labels
-      cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png', gt_im)
+      
+      if gt_im:
+        # Now save predicted with ground truth labels
+        os.mkdir('/label_results/gt_vs_pred')
+        cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png', gt_im)
       
