@@ -161,7 +161,7 @@ def save_labels(images_path, model, yolo='yolov3'):
   try:
     lab = open(pred_file)
   except:
-    print("no predections for these images")
+    print("no predections for these images or the first prediction for the set has no detections")
   else:
     lab.close()
     os.mkdir('/label_results/preds')
