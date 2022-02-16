@@ -8,6 +8,7 @@ import warnings
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import numpy as np
 import torch
 
@@ -307,10 +308,12 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
    
     py = np.stack(py, axis=1)
     lines = []
+    patches = []
     text = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
             lines.append(ax.plot(px, y, linewidth=1, marker='s')[0])  # plot(recall, precision))
+            patches.append(mpatches.Patch(label='The red data'))
             text.append(names[i])
             axins.plot(px, y, linewidth=2)
     else:
@@ -319,6 +322,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
         
 
     lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue')[0])
+    patches.append(color='blue', mpatches.Patch(label='The red data'))
     text.append('all classes @ IOU 0.5')
     axins.plot(px, py.mean(1), linewidth=3, color='blue')
     ax.set_xlabel('Recall', fontsize=30)
@@ -339,7 +343,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=500)
     
-    legendFig.legend(lines, text, loc='center', ncol=5)
+    legendFig.legend(patches, text, loc='center', ncol=5)
     legendFig.savefig(Path(save_leg), dpi=600)
     
     plt.close()
