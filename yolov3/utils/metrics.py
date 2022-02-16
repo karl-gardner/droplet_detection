@@ -310,7 +310,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     text = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
-            lines.append(ax.plot(px, y, linewidth=1)[0])  # plot(recall, precision))
+            lines.append(ax.plot(px, y, linewidth=1, marker='s', markersize=0)[0])  # plot(recall, precision))
             text.append(names[i])
             axins.plot(px, y, linewidth=2)
     else:
@@ -339,7 +339,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
 #     plt.legend(loc="lower center")
     fig.savefig(Path(save_dir), dpi=500)
     
-    legendFig.legend(lines, text, loc='center', ncol=5, marker='s')
+    legendFig.legend(lines, text, loc='center', ncol=5)
     legendFig.savefig(Path(save_leg), dpi=600)
     
     plt.close()
