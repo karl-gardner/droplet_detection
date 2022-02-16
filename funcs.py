@@ -88,7 +88,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
     
     
-def save_labels(images_path, model, yolo='yolov3'):
+def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)]):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   
@@ -97,7 +97,7 @@ def save_labels(images_path, model, yolo='yolov3'):
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     gt_box_thick = 1
     pred_labels = ['', '', '', '']
-    gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+#     gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
     text_color = (0, 0, 0)
     box_thickness = 1
     font_size = .55
@@ -107,8 +107,6 @@ def save_labels(images_path, model, yolo='yolov3'):
     gt_labels = ['']
     gt_box_thick = 4
     pred_labels = ['cell']
-    gt_colors = [(0, 255, 0)]
-    pred_colors = [(0, 0, 255)]
     text_color = (255, 255, 255)
     box_thickness = 3
     font_size = 1.2
