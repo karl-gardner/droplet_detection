@@ -307,22 +307,22 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', save_leg = "path", names=
     axins = ax.inset_axes([0.2, 0.05, 0.3, 0.7])
    
     py = np.stack(py, axis=1)
-    lines = []
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#d62728']
     patches = []
     text = []
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
-            lines.append(ax.plot(px, y, linewidth=1, marker='s')[0])  # plot(recall, precision))
-            patches.append(mpatches.Patch(label='The red data'))
+            ax.plot(px, y, linewidth=1, color=colors[i])  # plot(recall, precision))
+            patches.append(mpatches.Patch(color=colors[i])
             text.append(names[i])
             axins.plot(px, y, linewidth=2)
     else:
-        lines.append(ax.plot(px, py, linewidth=1, color='grey')[0])  # plot(recall, precision))
+        ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision))
         axins.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
         
 
-    lines.append(ax.plot(px, py.mean(1), linewidth=3, color='blue')[0])
-    patches.append(mpatches.Patch(color='blue',label='The red data'))
+    ax.plot(px, py.mean(1), linewidth=3, color='blue')
+    patches.append(mpatches.Patch(color='blue')
     text.append('all classes @ IOU 0.5')
     axins.plot(px, py.mean(1), linewidth=3, color='blue')
     ax.set_xlabel('Recall', fontsize=30)
