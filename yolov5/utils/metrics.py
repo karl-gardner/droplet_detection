@@ -302,7 +302,7 @@ def wh_iou(wh1, wh2):
 
 def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6), tight_layout=True)
+    fig, ax = plt.subplots(1, 1, figsize=(15, 6), tight_layout=True)
     
     # save legend externally
     legendFig = plt.figure("Legend plot", figsize=[14,2])
@@ -326,7 +326,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.set_ylabel('Precision', fontsize=30)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.tick_params(labelsize=21)
+    ax.tick_params(labelsize=23)
     
     # sub region of the original image
     x1, x2, y1, y2 = .8, 1, .5, 1
