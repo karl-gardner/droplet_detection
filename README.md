@@ -1,4 +1,5 @@
-![ttu_chemical](https://user-images.githubusercontent.com/91646805/153929584-46b618dd-8263-4326-85c2-c920d346ebc4.jpg)
+![ttu_chemical](https://user-images.githubusercontent.com/91646805/154190573-53e361f6-7c60-4062-b56b-7cbd11d39fc4.jpg)
+
 
 # Droplet Detection Model
 
