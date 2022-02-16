@@ -211,6 +211,7 @@ def save_labels(images_path, model, yolo='yolov3'):
         
   try:
     gt_pred_im = gt_im
+    gt_pred_im = pred_im
   except:
     pass
   else:
