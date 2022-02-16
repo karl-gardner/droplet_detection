@@ -326,7 +326,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.set_ylabel('Precision', fontsize=30)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.tick_params(labelsize=23)
+    ax.tick_params(labelsize=26)
     
     # sub region of the original image
     x1, x2, y1, y2 = .8, 1, .5, 1
@@ -335,7 +335,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     axins.set_xticks([])
     axins.set_yticks([])
     ax.indicate_inset_zoom(axins, edgecolor="black")
-    ax.set_title("YOLOv5",fontsize=34)
+    ax.set_title("YOLOv5",fontsize=38)
     
 #     plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
     fig.savefig(Path(save_dir), dpi=500)
