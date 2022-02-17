@@ -224,30 +224,6 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
         gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
-                     txt_color=(255,0,0), box_thick=2, fontsize=font_size, tf =font_thickness, filled=False)
+                     txt_color=(255,255,255), box_thick=2, fontsize=font_size, tf =font_thickness)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
-        
-        
-        
-        
-        
-#         if gt_im:
-#           gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
-#                          txt_color=text_color, box_thick=1, fontsize=0.55, tf =font_thickness)
-# #         if model == 'cell':
-# #           input_im = box_label(input_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
-# #           if gt_im:
-# #             gt_im = box_label(gt_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]], box_thick=3, fontsize=1.2, tf=4)
-      
-#       # Now save predicted labels
-#       os.mkdir('/label_results/preds')
-#       cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',input_im)
-      
-#       if gt_im:
-#         # Now save predicted with ground truth labels
-#         if count == 0:
-#           os.mkdir('/label_results/gt_vs_pred')
-#         cv2.imwrite('/label_results/gt_vs_pred/' + f[:-4] + '.png', gt_im)
-        
-      
