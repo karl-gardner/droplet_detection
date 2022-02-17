@@ -96,7 +96,6 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
   if model == 'droplet':
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     gt_box_thick = 1
-    pred_labels = ['', '', '', '']
     pred_colors = gt_colors
     text_color = (0, 0, 0)
     box_thickness = 1
@@ -106,7 +105,6 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
   if model == 'cell':
     gt_labels = ['']
     gt_box_thick = 4
-    pred_labels = ['cell']
     text_color = (255, 255, 255)
     box_thickness = 3
     font_size = 1.2
@@ -201,7 +199,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
         # Now save (1) predicted labels
         for i in range(pred_boxes.shape[0]):
           b = pred_boxes[i,:]
-          pred_im = box_label(pred_im, b, pred_labels[pred_classes[i]] + ' %.2f' % conf[i], color=pred_colors[pred_classes[i]],
+          pred_im = box_label(pred_im, b, '%.2f' % conf[i], color=pred_colors[pred_classes[i]],
                          txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
 
         cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
@@ -224,7 +222,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
       
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
-        gt_pred_im = box_label(gt_pred_im, pred_b, pred_labels[all_pred_classes[j][i]] + ' %.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
+        gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
                      txt_color=text_color, box_thick=2, fontsize=font_size, tf =font_thickness)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
