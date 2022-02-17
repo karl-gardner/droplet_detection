@@ -1,5 +1,6 @@
 ![ttu_chemical](https://user-images.githubusercontent.com/91646805/154190573-53e361f6-7c60-4062-b56b-7cbd11d39fc4.jpg)
-
+<br>
+This repository is authored by Karl Gardner a Ph.D. student in Dr. Wei Li's Lab at Texas Tech University.  More information on the Li lab research group can be found at: https://www.depts.ttu.edu/che/research/li-lab/
 
 # Droplet Detection Model
 
