@@ -64,7 +64,7 @@ def cell_labels(label_path = None, set = None):
   
   
   
-def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1, tf = 1):
+def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1, tf = 1, filled = True):
   # Add one xyxy box to image with label
   p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
   cv2.rectangle(image, p1, p2, color, thickness=box_thick, lineType=cv2.LINE_AA)
@@ -72,7 +72,8 @@ def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 
       w, h = cv2.getTextSize(label, 0, fontScale=fontsize, thickness=tf)[0]  # text width, height
       outside = p1[1] - h - 3 >= 0  # label fits outside box
       p2 = p1[0] + w, p1[1] - h - 3 if outside else p1[1] + h + 3
-      cv2.rectangle(image, p1, p2, color, -1, cv2.LINE_AA)  # filled
+      if filled:
+        cv2.rectangle(image, p1, p2, color, -1, cv2.LINE_AA)  # filled
       cv2.putText(image, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, fontsize, txt_color,
                   thickness=tf, lineType=cv2.LINE_AA)
   return image
@@ -223,7 +224,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
         gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
-                     txt_color=(255,0,0), box_thick=2, fontsize=font_size, tf =font_thickness)
+                     txt_color=(255,0,0), box_thick=2, fontsize=font_size, tf =font_thickness, filled=False)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
         
