@@ -224,6 +224,6 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
       for i in range(all_pred_boxes[j].shape[0]):
         pred_b = all_pred_boxes[j][i,:]
         gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
-                     txt_color=(255,144,30), box_thick=3, fontsize=font_size, tf =font_thickness)
+                     txt_color=(255,120,20), box_thick=3, fontsize=font_size, tf =font_thickness)
       cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
