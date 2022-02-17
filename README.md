@@ -24,7 +24,7 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 
 
 <details>
-<summary>Instructions to Run Droplet Detection Model:</summary>
+<summary>Instructions:</summary>
 <br>
 
 1) First create a folder in your google drive account called droplet_classification (This step is important in order to keep the directories in check)
