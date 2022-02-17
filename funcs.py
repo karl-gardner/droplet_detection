@@ -97,7 +97,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
     gt_labels = ['drop_0cell', 'drop_1cell', 'drop_2cell', 'drop_3cell']
     gt_box_thick = 1
     pred_labels = ['', '', '', '']
-#     gt_colors = pred_colors = [(0,0,255), (0,255,255), (0,255, 0), (255,0,255)]
+    pred_colors = gt_colors
     text_color = (0, 0, 0)
     box_thickness = 1
     font_size = .55
