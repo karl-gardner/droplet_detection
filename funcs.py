@@ -59,33 +59,33 @@ def cell_labels(label_path = None, set = None):
     
     return [cell, images]
   
-def save_map(results_path)
-map5 = []
-map595 = []
-with open(results_path, newline='') as csvfile:
-  spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-  next(spamreader)
-  for row in spamreader:
-    for i, elem in enumerate(row):
-      if i == 6:
-        map5.append(float(elem.strip()))
-      if i == 7:
-        map595.append(float(elem.strip()))
-fig, axs = plt.subplots(1, 2, figsize=(18,6))
-axs[0].plot(map5, color="blue", marker='.', linewidth=2, markersize=12)
-axs[0].set_ylim(0, 1)
-axs[0].tick_params(axis='both', which='major', labelsize=29)
-axs[0].set_xlabel("Epochs", fontsize=35, fontfamily="Arial")
-axs[0].set_ylabel("mAP @ IOU 0.5", fontsize=35, fontfamily="Arial")
-axs[1].plot(map595, color="blue", marker='.', linewidth=2, markersize=12)
-axs[1].set_ylim(0, 1)
-axs[1].tick_params(axis='both', which='major', labelsize=29)
-axs[1].set_ylabel("mAP\n@ IOU 0.5:0.95", fontsize=35, fontfamily="Arial")
-axs[1].set_xlabel("Epochs", fontsize=35, fontfamily="Arial")
-fig.suptitle("YOLOv3",fontsize=45,fontfamily="Arial", y=1.05)
-fig.tight_layout(pad=4)
+def save_map(results_path):
+  map5 = []
+  map595 = []
+  with open(results_path, newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    next(spamreader)
+    for row in spamreader:
+      for i, elem in enumerate(row):
+        if i == 6:
+          map5.append(float(elem.strip()))
+        if i == 7:
+          map595.append(float(elem.strip()))
+  fig, axs = plt.subplots(1, 2, figsize=(18,6))
+  axs[0].plot(map5, color="blue", marker='.', linewidth=2, markersize=12)
+  axs[0].set_ylim(0, 1)
+  axs[0].tick_params(axis='both', which='major', labelsize=29)
+  axs[0].set_xlabel("Epochs", fontsize=35, fontfamily="Arial")
+  axs[0].set_ylabel("mAP @ IOU 0.5", fontsize=35, fontfamily="Arial")
+  axs[1].plot(map595, color="blue", marker='.', linewidth=2, markersize=12)
+  axs[1].set_ylim(0, 1)
+  axs[1].tick_params(axis='both', which='major', labelsize=29)
+  axs[1].set_ylabel("mAP\n@ IOU 0.5:0.95", fontsize=35, fontfamily="Arial")
+  axs[1].set_xlabel("Epochs", fontsize=35, fontfamily="Arial")
+  fig.suptitle("YOLOv3",fontsize=45,fontfamily="Arial", y=1.05)
+  fig.tight_layout(pad=4)
 
-fig.savefig("/mAP_yolov3.png", dpi=500, bbox_inches='tight')
+  fig.savefig("/mAP_yolov3.png", dpi=500, bbox_inches='tight')
 
   
 def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1, tf = 1, filled = True):
