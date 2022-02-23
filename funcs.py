@@ -89,7 +89,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
     
     
-def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)]):
+def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)]):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   
@@ -113,7 +113,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
   
   f = os.listdir(images_path)
   im_file = images_path + '/' + f[0]
-  pred_file = yolo + '/runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
+  pred_file = 'runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
   gt_file = images_path + '/../labels/' + f[0][0:-4] + '.txt'
   all_gt_boxes = []
   all_gt_classes = []
@@ -169,7 +169,7 @@ def save_labels(images_path, model, yolo='yolov3', gt_colors=[(0, 255, 0)], pred
     for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
       input_im = cv2.imread(im_file)
-      pred_file = yolo + '/runs/detect/exp/labels/' + f[0:-4] + '.txt'
+      pred_file = 'runs/detect/exp/labels/' + f[0:-4] + '.txt'
       try:
         lab = open(pred_file)
       except:
