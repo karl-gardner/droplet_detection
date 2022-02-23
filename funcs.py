@@ -114,7 +114,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
     
     
-def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)]):
+def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)], gt_labels=['']):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   
@@ -129,9 +129,8 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
     font_thickness = 1
   
   if model == 'cell':
-    gt_labels = ['']
     gt_box_thick = 4
-    text_color = (255, 255, 255)
+    text_color = (255, 255, 0)
     box_thickness = 3
     font_size = 1.2
     font_thickness = 4
