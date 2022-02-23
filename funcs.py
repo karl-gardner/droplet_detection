@@ -114,7 +114,7 @@ def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
       
     
     
-def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)], gt_labels=['']):
+def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)], pred_labels = ''):
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   
@@ -130,6 +130,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
   
   if model == 'cell':
     gt_box_thick = 4
+    gt_labels = ['']
     text_color = (255, 255, 0)
     box_thickness = 3
     font_size = 1.2
@@ -145,6 +146,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
   all_pred_classes = []
   all_conf = []
 
+  # Try block for ground truth labels
   try:
     lab = open(gt_file)
   except:
@@ -221,15 +223,15 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
         all_conf.append(conf)
 
         pred_im = np.copy(input_im)
-        # Now save (1) predicted labels
         for i in range(pred_boxes.shape[0]):
           b = pred_boxes[i,:]
-          pred_im = box_label(pred_im, b, '%.2f' % conf[i], color=pred_colors[pred_classes[i]],
+          pred_im = box_label(pred_im, b, label=pred_labels + ('%.2f' % conf[i]), color=pred_colors[pred_classes[i]],
                          txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
 
         cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
         cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
-        
+  
+  # Try block for ground truth and predicted labels      
   try:
     gt_pred_im = gt_im
     gt_pred_im = pred_im
