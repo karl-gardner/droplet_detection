@@ -1,4 +1,4 @@
-Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering (Dr. Wei Li), Texas Tech University
+Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering, Texas Tech University
 <br><br>
 
 
