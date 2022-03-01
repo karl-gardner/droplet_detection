@@ -6,7 +6,6 @@ Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering ([Dr. 
 
 ![go](http://stackoverflow.com){:target="_blank" rel="noopener"}
 
-[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
 
 <div align="center">
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
