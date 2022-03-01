@@ -6,11 +6,11 @@ Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering (Dr. W
   <a href="https://www.depts.ttu.edu/che/research/li-lab/">
   <img src="https://user-images.githubusercontent.com/91646805/154190573-53e361f6-7c60-4062-b56b-7cbd11d39fc4.jpg" /></a><br><br>
   
-  <a href="https://www.depts.ttu.edu/che/research/li-lab/">
-  <img src="https://user-images.githubusercontent.com/91646805/156226124-422e5637-8d46-477d-b96d-ebfcb74a9f50.svg" /></a>
-  
   <a href="https://www.depts.ttu.edu/che/">
-  <img src="https://user-images.githubusercontent.com/91646805/156217188-9ce740df-8856-435b-ab1c-9c1500a13a43.svg" /></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156217188-9ce740df-8856-435b-ab1c-9c1500a13a43.svg" /></a>
+  
+  <a href="https://www.depts.ttu.edu/che/research/li-lab/">
+  <img src="https://user-images.githubusercontent.com/91646805/156226124-422e5637-8d46-477d-b96d-ebfcb74a9f50.svg" /></a><br>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
   <img src="https://img.shields.io/badge/-YOLOv3-blue?logo=googlecolab&logoWidth=18&labelColor=grey" /></a>
