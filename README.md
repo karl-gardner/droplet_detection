@@ -4,7 +4,7 @@ Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering ([Dr. 
 
 # Droplet Detection Model
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/karl-gardner/droplet_detection/blob/master/yolov3.ipynb)
+[![YOLOv3](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb)
 
 
 <p align="center">
