@@ -11,6 +11,8 @@ Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering ([Dr. 
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov5.ipynb">
   <img src="https://img.shields.io/badge/-YOLOv5-blue?logo=googlecolab&logoWidth=18&labelColor=grey" /></a><br>
 
+  <a href="https://www.depts.ttu.edu/che/">
+  <img src="https://user-images.githubusercontent.com/91646805/156226124-422e5637-8d46-477d-b96d-ebfcb74a9f50.svg" /></a><br>
   
   <a href="https://www.depts.ttu.edu/che/">
   <img src="https://user-images.githubusercontent.com/91646805/156217188-9ce740df-8856-435b-ab1c-9c1500a13a43.svg" /></a><br>
