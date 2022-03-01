@@ -39,7 +39,7 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 </details>
 
 <details>
-<summary>Figure Notes (click to expand)</summary>
+<summary>Contributions (click to expand)</summary>
 
- **Publication Authors:** deno
+ **Publication Authors:** deno<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
 </details>
