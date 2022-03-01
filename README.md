@@ -11,7 +11,7 @@ Real time detection of cell encapsulation for Poisson distribution analysis and 
 Artificial Intelligence (AI) is becoming increasingly useful in numerous microfluidic platforms for biomedical applications. Although other researchers have introduced machine learning models for droplet generation and classification of mixing in droplets, automatic detection of droplets with cell encapsulation has not been explored, which hinders the implication of AI in droplet microfluidics for single cell-based applications.  You Only Look Once (YOLO), an influential class of object detectors, has had several improvements since the original publication by Joseph Redmon in 2016. This paper investigates the application of both YOLOv3 and YOLOv5 object detectors in the development of an automated droplet and cell detector. In the procedure, a droplet bounding box is predicted, then cropped from the original image for the individual cells to be detected through a separate model for full examination. The system includes a production set for additional performance analysis with Poisson statistics while providing a full experimental workflow with both droplet and cell models. The droplet generator employed contains an expansion chamber allowing for visualization of cell-encapsulated droplets with a digital camera. The training set is collected and preprocessed before labeling and applying image augmentations, allowing for a generalizable object detector. The mean average precision (mAP) is utilized as a validation and test set metric to investigate the model performance while individual predictions are explored to gather a deeper understanding of the results. Furthermore, it is demonstrated that droplet enumeration from the YOLOv3 model is consistent with hand counted ratios and the Poisson distribution, confirming that the platform can be used in real-time experiments for cell encapsulation optimization.
 
 <details>
-<summary>Instructions</summary>
+<summary>Instructions (click to expand)</summary>
 <br>
 
 1) First create a folder in your google drive account called droplet_classification (This step is important in order to keep the directories in check)
@@ -30,9 +30,9 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 </details>
 
 <details>
-<summary>Contributions</summary>
+<summary>Contributions (click to expand)</summary>
 <br>
-**Publication Authors:**<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
+* **Publication Authors:**<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
 ### Publication Acknowledgements:
 <br>WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
 </details>
