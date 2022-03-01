@@ -31,17 +31,8 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 
 <details>
 <summary>Contributions (click to expand)</summary>
-<br>
- **COCO AP val** denotes mAP@0.5:0.95 metric measured on the 5000-ima
- **Publication Authors:**<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
-  **Publication Acknowledgements:
-<br>WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
-</details>
 
-<details>
-<summary>Contributions (click to expand)</summary>
-
- **Publication Authors:** deno<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
+ **Publication Authors:** <br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
  
- **Publication Acknowledgements:** deno<br>WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
+ **Publication Acknowledgements:** <br>WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
 </details>
