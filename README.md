@@ -28,3 +28,11 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 9) Repeat steps 7 and 8 with the cell dataset in the link provided: https://universe.roboflow.com/karl-gardner-kmk9u/cropped_drops2/1.  This dataset only needs to be copied into the yolov3.ipynb notebook since it is not used in the yolov5.ipynb notebook.
 10) You can now use both notebooks to perform more testing or contribute to the project.  You can find the code written for many of the figures in the final paper: DOI Website
 </details>
+
+<details>
+<summary>Contributions</summary>
+<br>
+Paper Authors: Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br>
+Paper Acknowledgements:
+WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
+</details>
