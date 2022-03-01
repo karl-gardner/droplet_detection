@@ -4,7 +4,7 @@ Author: Karl Gardner<br>PhD Candidate, Department of Chemical Engineering ([Dr. 
 
 # Droplet Detection Model
 
-
+[go](http://stackoverflow.com){:target="_blank"}
 
 
 <div align="center">
