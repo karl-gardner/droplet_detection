@@ -32,7 +32,7 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 <details>
 <summary>Contributions</summary>
 <br>
-Paper Authors: Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
-Paper Acknowledgements:
+Publication Authors: Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
+Publication Acknowledgements:
 WL acknowledge support from National Science Foundation (CBET, Grant No. 1935792) and National Institute of Health (IMAT, Grant No. 1R21CA240185-01).
 </details>
