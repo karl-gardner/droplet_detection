@@ -14,7 +14,7 @@
   <img src="https://user-images.githubusercontent.com/91646805/156641068-be8f0336-89b5-43e9-aa64-39481ce37c94.svg" height="32"/></a>
   
   <a href="https://roboflow.com/">
-  <img src="https://user-images.githubusercontent.com/91646805/156641065-e7ebc456-64f7-4edc-a267-44fcc8e772a7.svg" height="32"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156641388-c609a6aa-8fce-47f0-a111-abfde9c5da05.svg" height="32"/></a><br>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
   <img src="https://user-images.githubusercontent.com/91646805/156640198-51f0ef4c-21c1-4d0f-aebd-861561dede95.svg" height="32"/></a>
