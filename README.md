@@ -17,19 +17,13 @@
   <img src="https://user-images.githubusercontent.com/91646805/156234752-55902a78-f68e-4eeb-bc78-b8bc6c57df07.svg" /></a><br>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
-  <img src="https://img.shields.io/badge/-YOLOv3-blue?logo=googlecolab&logoWidth=18&labelColor=grey" /></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156640198-51f0ef4c-21c1-4d0f-aebd-861561dede95.svg" /></a>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov5.ipynb">
-  <img src="https://img.shields.io/badge/-YOLOv5-blue?logo=googlecolab&logoWidth=18&labelColor=grey" /></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156640073-0a7ad496-7691-4e1c-822c-b78f3e7d070b.svg" /></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://img.shields.io/badge/-Ultralytics-blue?logo=github&logoWidth=18&labelColor=grey" /></a>
-  
-  <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156631948-500fa85a-48ed-4f1e-9642-3d60bff892f2.svg" height="28"/></a>
-  
-  <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156633069-1e3657b0-5d0a-4ee3-94ce-44f4266c90f3.svg" height="28"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156640075-41bb99ad-0ac6-4216-8f90-8680109c109c.svg" /></a>
 
 
  # Droplet Detection Model
