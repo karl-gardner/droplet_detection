@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/-Ultralytics-blue?logo=github&logoWidth=18&labelColor=grey" /></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156630530-239c1b70-f498-40e7-90b3-730d1b726a23.svg" height="28"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156631948-500fa85a-48ed-4f1e-9642-3d60bff892f2.svg" height="28"/></a><br>
 
 
 
