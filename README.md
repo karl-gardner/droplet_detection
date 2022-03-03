@@ -11,10 +11,10 @@
   <img src="https://user-images.githubusercontent.com/91646805/156635010-a1049d8a-a72e-4ed5-89ec-2ace11169d85.svg" height="32"/></a>
   
   <a href="https://www.depts.ttu.edu/che/">
-  <img src="https://user-images.githubusercontent.com/91646805/156635843-6a5d0e16-c033-4e65-bd4c-fe281f66584f.svg" height="32"/></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156641068-be8f0336-89b5-43e9-aa64-39481ce37c94.svg" height="32"/></a>
   
   <a href="https://roboflow.com/">
-  <img src="https://user-images.githubusercontent.com/91646805/156640399-f751c3e7-a8e5-487b-8c20-f0e7899055cf.svg" height="32"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156641065-e7ebc456-64f7-4edc-a267-44fcc8e772a7.svg" height="32"/></a><br>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
   <img src="https://user-images.githubusercontent.com/91646805/156640198-51f0ef4c-21c1-4d0f-aebd-861561dede95.svg" height="32"/></a>
@@ -23,7 +23,7 @@
   <img src="https://user-images.githubusercontent.com/91646805/156640073-0a7ad496-7691-4e1c-822c-b78f3e7d070b.svg" height="32"/></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156640075-41bb99ad-0ac6-4216-8f90-8680109c109c.svg" height="32"/></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156641066-fbc3635b-f373-4cb7-b141-9bcaad21beff.svg" height="32"/></a>
 
 
  # Droplet Detection Model
