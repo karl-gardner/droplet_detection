@@ -11,7 +11,7 @@
   <img src="https://user-images.githubusercontent.com/91646805/156635010-a1049d8a-a72e-4ed5-89ec-2ace11169d85.svg" height="32"/></a>
   
   <a href="https://www.depts.ttu.edu/che/">
-  <img src="https://user-images.githubusercontent.com/91646805/156217188-9ce740df-8856-435b-ab1c-9c1500a13a43.svg" /></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156635843-6a5d0e16-c033-4e65-bd4c-fe281f66584f.svg" height="32"/></a>
   
   <a href="https://roboflow.com/">
   <img src="https://user-images.githubusercontent.com/91646805/156234752-55902a78-f68e-4eeb-bc78-b8bc6c57df07.svg" /></a><br>
