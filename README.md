@@ -24,6 +24,9 @@
   
   <a href="https://github.com/ultralytics/yolov5">
   <img src="https://user-images.githubusercontent.com/91646805/156627368-18131682-b04e-4041-9773-71319e5bb425.svg" height="28"/></a><br>
+  
+   <a href="https://github.com/ultralytics/yolov5">
+  <img src="https://user-images.githubusercontent.com/91646805/156628183-c0e29b2a-af46-4d05-9cab-fe8080acdddf.svg" height="28"/></a><br>
 
 
  # Droplet Detection Model
