@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/-Ultralytics-blue?logo=github&logoWidth=18&labelColor=grey" /></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156629429-6e3b4606-369b-4f32-a5fc-1cec99ec0071.svg" height="28"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156630040-1e9b7095-77b4-47bb-a561-ada5873b48e2.svg" height="28"/></a><br>
 
 
  # Droplet Detection Model
