@@ -20,13 +20,10 @@
   <img src="https://img.shields.io/badge/-YOLOv5-blue?logo=googlecolab&logoWidth=18&labelColor=grey" /></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://img.shields.io/badge/-Ultralytics-blue?logo=github&logoWidth=18&labelColor=grey" /></a><br>
+  <img src="https://img.shields.io/badge/-Ultralytics-blue?logo=github&logoWidth=18&labelColor=grey" /></a>
   
   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156627368-18131682-b04e-4041-9773-71319e5bb425.svg" height="28"/></a><br>
-  
-   <a href="https://github.com/ultralytics/yolov5">
-  <img src="https://user-images.githubusercontent.com/91646805/156628183-c0e29b2a-af46-4d05-9cab-fe8080acdddf.svg" height="28"/></a><br>
+  <img src="https://user-images.githubusercontent.com/91646805/156628793-7b9bfd77-ad87-4a76-9121-06f79442ab65.svg" height="28"/></a><br>
 
 
  # Droplet Detection Model
