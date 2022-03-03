@@ -38,7 +38,7 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 <br>
 
 1) First create a folder in your google drive account called droplet_classification (This step is important in order to keep the directories in check)
-2) Use this link: <a href="https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing">
+2) Use this link: <a href="https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing" style ="position:relative; top:20px>
   <img src="https://user-images.githubusercontent.com/91646805/156672255-cdaba90b-0932-4468-b64c-09e4a260be1b.svg" height="32"/></a> to access the shared google drive folder
 3) At the top there will be a dropdown arrow after the folder location (Shared with me > data_files): click on this dropdown arrow
 4) Click on the "Add shortcut to Drive" button then navigate to inside your droplet_classification folder and click the blue "Add Shortcut" button.  This will add a shortcut to the shared google drive folder in your droplet_classification folder.
