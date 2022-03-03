@@ -5,10 +5,10 @@
   <img src="https://user-images.githubusercontent.com/91646805/154190573-53e361f6-7c60-4062-b56b-7cbd11d39fc4.jpg"/></a><br><br>
   
   <a href="https://www.depts.ttu.edu/che/research/li-lab/">
-  <img src="https://user-images.githubusercontent.com/91646805/156633983-f4c23468-a1cd-419b-9aae-2a126327ee36.svg" height="32"/></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156635015-0cdcb0bb-0482-4693-b096-04f2a78f6b8e.svg" height="32"/></a>
   
   <a href="https://vanapallilab.wixsite.com/microfluidics">
-  <img src="https://user-images.githubusercontent.com/91646805/156633737-0060bfb4-54e4-4621-aa41-64dd41df1d34.svg" height="32"/></a>
+  <img src="https://user-images.githubusercontent.com/91646805/156635010-a1049d8a-a72e-4ed5-89ec-2ace11169d85.svg" height="32"/></a>
   
   <a href="https://www.depts.ttu.edu/che/">
   <img src="https://user-images.githubusercontent.com/91646805/156217188-9ce740df-8856-435b-ab1c-9c1500a13a43.svg" /></a>
