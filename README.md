@@ -38,7 +38,7 @@ Artificial Intelligence (AI) is becoming increasingly useful in numerous microfl
 
 1) First create a folder in your google drive account called droplet_classification (This step is important in order to keep the directories in check)
 2) Use this link <a href="https://drive.google.com/drive/folders/1Oo68HSdU-jzcBAEr0yeRuzuSxoprEP_D?usp=sharing">
-  <img src="https://user-images.githubusercontent.com/91646805/156700694-6d16869b-166b-4bb2-86e8-a8b17c520b43.svg" height="45"/></a> to access the shared google drive folder
+  <img src="https://user-images.githubusercontent.com/91646805/156700795-833eafaa-9e5d-4333-918b-66be4060863d.svg" height="18"/></a> to access the shared google drive folder
 3) At the top there will be a dropdown arrow after the folder location (Shared with me > data_files): click on this dropdown arrow
 4) Click on the "Add shortcut to Drive" button then navigate to inside your droplet_classification folder and click the blue "Add Shortcut" button.  This will add a shortcut to the shared google drive folder in your droplet_classification folder.
 5) Open the yolov3 colab notebook from the colab badge provided, then click "Save a copy in Drive" under File > Save a copy in Drive.  Do the same for the provided yolov5 colab notebook.
