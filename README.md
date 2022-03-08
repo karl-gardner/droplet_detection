@@ -1,4 +1,5 @@
 <div align="center">
+  # Droplet Detection Model
   # Author Karl Gardner
   <br>PhD Candidate, Department of Chemical Engineering, Texas Tech University
   <br><br>
