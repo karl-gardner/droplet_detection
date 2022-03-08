@@ -1,7 +1,7 @@
-<h1 align="center">Material Bread</h1>
+<h2 align="center">Material Bread</h2>
 
 <div align="center">
-  # Author Karl Gardner
+  # Author Karl Gardner #
   <br>
   ## PhD Candidate, Department of Chemical Engineering, Texas Tech University
   <br><br>
