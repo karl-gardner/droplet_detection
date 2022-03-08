@@ -1,10 +1,10 @@
 <div align="center">
+
+</div>
+<div align="center">
 # Author Karl Gardner
 <br>
 ## PhD Candidate, Department of Chemical Engineering, Texas Tech University
-</div>
-<div align="center">
-
   <br><br>
   <a href="https://www.depts.ttu.edu/che/research/li-lab/">
   <img src="https://user-images.githubusercontent.com/91646805/154190573-53e361f6-7c60-4062-b56b-7cbd11d39fc4.jpg"/></a><br><br>
@@ -31,7 +31,7 @@
   <img src="https://user-images.githubusercontent.com/91646805/156641066-fbc3635b-f373-4cb7-b141-9bcaad21beff.svg" height="32"/></a>
 
 
- # Droplet Detection Model
+# Droplet Detection Model
 Artificial Intelligence (AI) is becoming increasingly useful in numerous microfluidic platforms for biomedical applications. Although other researchers have introduced machine learning models for droplet generation and classification of mixing in droplets, automatic detection of droplets with cell encapsulation has not been explored, which hinders the implication of AI in droplet microfluidics for single cell-based applications.  You Only Look Once (YOLO), an influential class of object detectors, has had several improvements since the original publication by Joseph Redmon in 2016. This paper investigates the application of both YOLOv3 and YOLOv5 object detectors in the development of an automated droplet and cell detector. In the procedure, a droplet bounding box is predicted, then cropped from the original image for the individual cells to be detected through a separate model for full examination. The system includes a production set for additional performance analysis with Poisson statistics while providing a full experimental workflow with both droplet and cell models. The droplet generator employed contains an expansion chamber allowing for visualization of cell-encapsulated droplets with a digital camera. The training set is collected and preprocessed before labeling and applying image augmentations, allowing for a generalizable object detector. The mean average precision (mAP) is utilized as a validation and test set metric to investigate the model performance while individual predictions are explored to gather a deeper understanding of the results. Furthermore, it is demonstrated that droplet enumeration from the YOLOv3 model is consistent with hand counted ratios and the Poisson distribution, confirming that the platform can be used in real-time experiments for cell encapsulation optimization.
 </div>
 
