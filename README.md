@@ -1,6 +1,5 @@
-# Author Karl Gardner
 <div align="center">
-  
+  # Author Karl Gardner
   <br>PhD Candidate, Department of Chemical Engineering, Texas Tech University
   <br><br>
   <a href="https://www.depts.ttu.edu/che/research/li-lab/">
