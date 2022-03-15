@@ -179,7 +179,7 @@ class ConfusionMatrix:
 #                 sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 8}, cmap='Blues', fmt='.2f', square=True,
 #                            xticklabels=names + ['background FP'] if labels else "auto",
 #                            yticklabels=names + ['background FN'] if labels else "auto").set_facecolor((1, 1, 1))
-                sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 20}, cmap='Blues', fmt='d', square=True,
+                sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 20}, cmap='Blues', fmt='.2f', square=True,
                            xticklabels=names,yticklabels=names).set_facecolor((1, 1, 1))
             fig.axes[0].set_xlabel('True', fontsize=35)
             fig.axes[0].set_ylabel('Predicted',fontsize=35)
