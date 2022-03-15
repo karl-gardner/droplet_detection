@@ -179,11 +179,11 @@ class ConfusionMatrix:
 #                 sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 8}, cmap='Blues', fmt='.2f', square=True,
 #                            xticklabels=names + ['background FP'] if labels else "auto",
 #                            yticklabels=names + ['background FN'] if labels else "auto").set_facecolor((1, 1, 1))
-                sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 8}, cmap='Blues', fmt='.2f', square=True,
+                sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 20}, cmap='Blues', fmt='.2f', square=True,
                            xticklabels=names,yticklabels=names).set_facecolor((1, 1, 1))
             fig.axes[0].set_xlabel('True')
             fig.axes[0].set_ylabel('Predicted')
-            fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=250)
+            fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=400)
             plt.close()
         except Exception as e:
             print(f'WARNING: ConfusionMatrix plot failure: {e}')
