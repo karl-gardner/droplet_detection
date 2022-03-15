@@ -164,7 +164,7 @@ class ConfusionMatrix:
     def matrix(self):
         return self.matrix
 
-    def plot(self, normalize=True, save_dir='', names=()):
+    def plot(self, normalize=False, save_dir='', names=()):
         try:
             import seaborn as sn
 
