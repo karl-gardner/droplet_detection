@@ -115,7 +115,8 @@ def compute_ap(recall, precision):
 class ConfusionMatrix:
     # Updated version of https://github.com/kaanakan/object_detection_confusion_matrix
     def __init__(self, nc, conf=0.25, iou_thres=0.45):
-        self.matrix = np.zeros((nc + 1, nc + 1))
+#         self.matrix = np.zeros((nc + 1, nc + 1))
+        self.matrix = np.zeros((nc, nc))
         self.nc = nc  # number of classes
         self.conf = conf
         self.iou_thres = iou_thres
@@ -152,13 +153,13 @@ class ConfusionMatrix:
             j = m0 == i
             if n and sum(j) == 1:
                 self.matrix[detection_classes[m1[j]], gc] += 1  # correct
-            else:
-                self.matrix[self.nc, gc] += 1  # background FP
+#             else:
+#                 self.matrix[self.nc, gc] += 1  # background FP
 
-        if n:
-            for i, dc in enumerate(detection_classes):
-                if not any(m1 == i):
-                    self.matrix[dc, self.nc] += 1  # background FN
+#         if n:
+#             for i, dc in enumerate(detection_classes):
+#                 if not any(m1 == i):
+#                     self.matrix[dc, self.nc] += 1  # background FN
 
     def matrix(self):
         return self.matrix
@@ -171,7 +172,7 @@ class ConfusionMatrix:
             array[array < 0.005] = np.nan  # don't annotate (would appear as 0.00)
 
             fig = plt.figure(figsize=(12, 9), tight_layout=True)
-            sn.set_theme(font_scale=6 if self.nc < 50 else 0.8)  # for label size
+            sn.set_theme(font_scale=2 if self.nc < 50 else 0.8)  # for label size
             labels = (0 < len(names) < 99) and len(names) == self.nc  # apply names to ticklabels
             with warnings.catch_warnings():
                 warnings.simplefilter('ignore')  # suppress empty matrix RuntimeWarning: All-NaN slice encountered
