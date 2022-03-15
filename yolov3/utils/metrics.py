@@ -176,9 +176,11 @@ class ConfusionMatrix:
             labels = (0 < len(names) < 99) and len(names) == self.nc  # apply names to ticklabels
             with warnings.catch_warnings():
                 warnings.simplefilter('ignore')  # suppress empty matrix RuntimeWarning: All-NaN slice encountered
+#                 sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 8}, cmap='Blues', fmt='.2f', square=True,
+#                            xticklabels=names + ['background FP'] if labels else "auto",
+#                            yticklabels=names + ['background FN'] if labels else "auto").set_facecolor((1, 1, 1))
                 sn.heatmap(array, annot=self.nc < 30, annot_kws={"size": 8}, cmap='Blues', fmt='.2f', square=True,
-                           xticklabels=names + ['background FP'] if labels else "auto",
-                           yticklabels=names + ['background FN'] if labels else "auto").set_facecolor((1, 1, 1))
+                           xticklabels=names,yticklabels=names).set_facecolor((1, 1, 1))
             fig.axes[0].set_xlabel('True')
             fig.axes[0].set_ylabel('Predicted')
             fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=250)
