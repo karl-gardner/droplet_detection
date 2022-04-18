@@ -189,7 +189,7 @@ class ConfusionMatrix:
             fig.axes[0].set_title('YOLOv5', fontsize=45)
             fig.axes[0].set_xlabel('True', fontsize=35)
             fig.axes[0].set_ylabel('Predicted',fontsize=35)
-            fig.savefig(Path(save_dir) / 'confusion_matrix.png', dpi=500, bbox_inches='tight')
+            fig.savefig(Path(save_dir) / 'confusion_matrix.tif', dpi=500, bbox_inches='tight')
             plt.close()
         except Exception as e:
             print(f'WARNING: ConfusionMatrix plot failure: {e}')
