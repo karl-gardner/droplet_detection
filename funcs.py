@@ -185,6 +185,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
       
   # Try block for predicted labels
+  print("pred_file: ", pred_file)
   try:
     lab = open(pred_file)
   except:
