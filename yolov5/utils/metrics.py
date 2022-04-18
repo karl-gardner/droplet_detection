@@ -171,7 +171,7 @@ class ConfusionMatrix:
         # fn = self.matrix.sum(0) - tp  # false negatives (missed detections)
         return tp[:-1], fp[:-1]  # remove background class
 
-    def plot(self, normalize=True, save_dir='', names=()):
+    def plot(self, normalize=False, save_dir='', names=()):
         try:
             import seaborn as sn
 
