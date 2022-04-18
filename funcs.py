@@ -145,7 +145,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
   all_conf = []
 
   # If block for ground truth labels
-  if len(os.listdir(images_path + '/../labels'))) == 0:
+  if len(os.listdir(images_path + '/../labels')) == 0:
     print("no ground truth labels for these images")
   else:
     os.mkdir('/label_results/gts')
@@ -224,7 +224,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
         cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
   
   # If block for ground truth and predicted labels      
-if len(os.listdir('runs/detect/exp/labels')) != 0 and len(os.listdir(images_path + '/../labels'))) != 0:
+if len(os.listdir('runs/detect/exp/labels')) != 0 and len(os.listdir(images_path + '/../labels')) != 0:
   os.mkdir('/label_results/gt_preds')
   for j, f in enumerate(sorted(os.listdir(images_path))):
     im_file = images_path + '/' + f
