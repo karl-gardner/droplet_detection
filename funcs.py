@@ -138,21 +138,16 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
   
   f = os.listdir(images_path)
   im_file = images_path + '/' + f[0]
-  pred_file = 'runs/detect/exp/labels/' + f[0][0:-4] + '.txt'
-  gt_file = images_path + '/../labels/' + f[0][0:-4] + '.txt'
   all_gt_boxes = []
   all_gt_classes = []
   all_pred_boxes = []
   all_pred_classes = []
   all_conf = []
 
-  # Try block for ground truth labels
-  try:
-    lab = open(gt_file)
-  except:
+  # If block for ground truth labels
+  if len(os.listdir(images_path + '/../labels'))) == 0:
     print("no ground truth labels for these images")
   else:
-    lab.close()
     os.mkdir('/label_results/gts')
     for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
@@ -184,14 +179,10 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
       cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
       cv2.imwrite('/label_results/gts/' + f[:-4] + '.png', gt_im)
       
-  # Try block for predicted labels
-  print("pred_file: ", pred_file)
-  try:
-    lab = open(pred_file)
-  except:
+  # If block for predicted labels
+  if len(os.listdir('runs/detect/exp/labels')) == 0:
     print("no predections for these images or the first prediction for the set has no detections")
   else:
-    lab.close()
     os.mkdir('/label_results/preds')
     for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
@@ -232,25 +223,20 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
         cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
         cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
   
-  # Try block for ground truth and predicted labels      
-  try:
-    gt_pred_im = gt_im
-    gt_pred_im = pred_im
-  except:
-    pass
-  else:
-    os.mkdir('/label_results/gt_preds')
-    for j, f in enumerate(sorted(os.listdir(images_path))):
-      im_file = images_path + '/' + f
-      gt_pred_im = cv2.imread(im_file)
-      for i in range(all_gt_boxes[j].shape[0]):
-        gt_b = all_gt_boxes[j][i,:]
-        gt_pred_im = box_label(gt_pred_im, gt_b, label=gt_labels[all_gt_classes[j][i]], color=gt_colors[all_gt_classes[j][i]], 
-                               txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
-      
-      for i in range(all_pred_boxes[j].shape[0]):
-        pred_b = all_pred_boxes[j][i,:]
-        gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
-                     txt_color=(255,255,0), box_thick=3, fontsize=font_size, tf =font_thickness)
-      cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
+  # If block for ground truth and predicted labels      
+if len(os.listdir('runs/detect/exp/labels')) != 0 and len(os.listdir(images_path + '/../labels'))) != 0:
+  os.mkdir('/label_results/gt_preds')
+  for j, f in enumerate(sorted(os.listdir(images_path))):
+    im_file = images_path + '/' + f
+    gt_pred_im = cv2.imread(im_file)
+    for i in range(all_gt_boxes[j].shape[0]):
+      gt_b = all_gt_boxes[j][i,:]
+      gt_pred_im = box_label(gt_pred_im, gt_b, label=gt_labels[all_gt_classes[j][i]], color=gt_colors[all_gt_classes[j][i]], 
+                             txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+
+    for i in range(all_pred_boxes[j].shape[0]):
+      pred_b = all_pred_boxes[j][i,:]
+      gt_pred_im = box_label(gt_pred_im, pred_b, '%.2f' % all_conf[j][i], color=pred_colors[all_pred_classes[j][i]],
+                   txt_color=(255,255,0), box_thick=3, fontsize=font_size, tf =font_thickness)
+    cv2.imwrite('/label_results/gt_preds/' + f[:-4] + '.png',gt_pred_im)
         
