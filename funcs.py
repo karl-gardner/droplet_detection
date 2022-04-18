@@ -147,7 +147,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
   # Try block for ground truth labels
   try:
     gt_list = images_path + '/../labels'
-    assert(len(gt_list) != 0)
+    assert(len(os.listdir(gt_list)) != 0)
   except:
     print("no ground truth labels for these images")
   else:
