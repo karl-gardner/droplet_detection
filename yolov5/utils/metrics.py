@@ -154,13 +154,13 @@ class ConfusionMatrix:
             j = m0 == i
             if n and sum(j) == 1:
                 self.matrix[detection_classes[m1[j]], gc] += 1  # correct
-            else:
-                self.matrix[self.nc, gc] += 1  # background FP
+#             else:
+#                 self.matrix[self.nc, gc] += 1  # background FP
 
-        if n:
-            for i, dc in enumerate(detection_classes):
-                if not any(m1 == i):
-                    self.matrix[dc, self.nc] += 1  # background FN
+#         if n:
+#             for i, dc in enumerate(detection_classes):
+#                 if not any(m1 == i):
+#                     self.matrix[dc, self.nc] += 1  # background FN
 
     def matrix(self):
         return self.matrix
@@ -169,7 +169,8 @@ class ConfusionMatrix:
         tp = self.matrix.diagonal()  # true positives
         fp = self.matrix.sum(1) - tp  # false positives
         # fn = self.matrix.sum(0) - tp  # false negatives (missed detections)
-        return tp[:-1], fp[:-1]  # remove background class
+#         return tp[:-1], fp[:-1]  # remove background class
+        return tp, fp
 
     def plot(self, normalize=False, save_dir='', names=()):
         try:
