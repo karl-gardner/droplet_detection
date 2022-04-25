@@ -60,7 +60,7 @@ Some information here
 </details>
 
 <details open>
-<summary>Contributions (click to expand)</summary><br>
+<summary>Contributions</summary><br>
 
  **Publication Authors:**<br>Karl Gardner, Md Mezbah Uddin, Linh Tran, Thanh Pham, Siva Vanapalli, and Wei Li<br><br>
  
