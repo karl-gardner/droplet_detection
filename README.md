@@ -55,7 +55,7 @@ Encapsulation of cells inside microfluidic droplets is central to several applic
 </details>
 
 <details>
-<summary>One More (click to expand)</summary><br>
+<summary>Testing (click to expand)</summary><br>
 Some information here
 </details>
 
