@@ -4,6 +4,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
+def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
+    # Convert nx4 boxes from [x, y, w, h] normalized to [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
+    y = np.copy(x)
+    y[:, 0] = w * (x[:, 0] - x[:, 2] / 2) + padw  # top left x
+    y[:, 1] = h * (x[:, 1] - x[:, 3] / 2) + padh  # top left y
+    y[:, 2] = w * (x[:, 0] + x[:, 2] / 2) + padw  # bottom right x
+    y[:, 3] = h * (x[:, 1] + x[:, 3] / 2) + padh  # bottom right y
+    return y
+  
 # Print and return images and labels in a list format
 def drop_labels(label_path = None, set = None):
   if label_path == None:
@@ -59,7 +68,60 @@ def cell_labels(label_path = None, set = None):
     print("images: " + str(images) + '\n')
     
     return [cell, images]
+
+
+def save_cropped(counter_tot):
+  if counter_tot  == 0:
+    global set_index 
+    set_index = 0
+    shutil.rmtree("/cropped_drops", ignore_errors=True)
+    os.mkdir("/cropped_drops")
   
+  dataset = datasets[set_index]
+  counter_set = 0
+  for j, im_file in enumerate(os.listdir(f"../{dataset}/images")):
+    if j % 5 == 0:
+      f_label = im_file[0:-4]+".txt"
+      with open(f"../{dataset}/labels/{f_label}") as f:
+        lines = f.readlines()
+        rows = len(lines)
+        boxes = []
+        for line in lines:
+          line = line.split()
+          if int(line[0]) == 0:
+            continue
+          x = float(line[1])
+          y = float(line[2])
+          mean_wh = (float(line[3])+float(line[4]))/2
+          if x + mean_wh/2 > 1:
+            x = 1 - mean_wh/2
+          if y + mean_wh/2 > 1:
+            y = 1 - mean_wh/2
+          if x-mean_wh/2 < 0:
+            x = mean_wh/2
+          if y-mean_wh/2 < 0:
+            y = mean_wh/2
+          boxes.append([x,y,mean_wh,mean_wh])
+      boxes = xywhn2xyxy(np.array(boxes), w=544, h=544)
+      im = cv2.imread(f"../{dataset}/images/{im_file}")
+      for i in range(boxes.shape[0]):
+        # May not be square by one pixel... make square
+        if int(boxes[i,3])-int(boxes[i,1]) < int(boxes[i,2])-int(boxes[i,0]):
+          boxes[i,3] += 1
+        if int(boxes[i,3])-int(boxes[i,1]) > int(boxes[i,2])-int(boxes[i,0]):
+          boxes[i,2] += 1
+        cropped = im[int(boxes[i,1]):int(boxes[i,3]),int(boxes[i,0]):int(boxes[i,2]),:]
+        cv2.imwrite(f"/cropped_drops/im_{counter_tot}.png",cropped)
+        counter_tot += 1
+        counter_set += 1
+  print(f"number of images saved from {dataset} set: {counter_set}")
+  if set_index < len(datasets)-1:
+    set_index += 1
+    counter_tot = save_cropped(counter_tot)
+  return counter_tot
+
+
+
 def save_map(results_path):
   map5 = []
   map595 = []
@@ -102,15 +164,6 @@ def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 
       cv2.putText(image, label, (p1[0], p1[1] - 2 if outside else p1[1] + h + 2), 0, fontsize, txt_color,
                   thickness=tf, lineType=cv2.LINE_AA)
   return image
-      
-def xywhn2xyxy(x, w=640, h=640, padw=0, padh=0):
-    # Convert nx4 boxes from [x, y, w, h] normalized to [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
-    y = np.copy(x)
-    y[:, 0] = w * (x[:, 0] - x[:, 2] / 2) + padw  # top left x
-    y[:, 1] = h * (x[:, 1] - x[:, 3] / 2) + padh  # top left y
-    y[:, 2] = w * (x[:, 0] + x[:, 2] / 2) + padw  # bottom right x
-    y[:, 3] = h * (x[:, 1] + x[:, 3] / 2) + padh  # bottom right y
-    return y
       
     
     
