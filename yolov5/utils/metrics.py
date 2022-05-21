@@ -302,7 +302,7 @@ def wh_iou(wh1, wh2):
 # Plots ----------------------------------------------------------------------------------------------------------------
 # karl-gardner changes in plot_pr_curve --------------------------------------------------------------------------------
 
-def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
+def plot_pr_curve(px, py, ap, save_dir='pr_curve.tif', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(15, 6), tight_layout=True)
     
@@ -340,7 +340,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     ax.set_title("YOLOv5",fontsize=38)
     
 #     plt.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
-    fig.savefig(Path(save_dir), dpi=500)
+    fig.savefig(Path(save_dir), dpi=500, bbox_inches='tight')
     plt.close()
 
 
