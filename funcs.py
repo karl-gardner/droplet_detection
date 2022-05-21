@@ -72,14 +72,14 @@ def cell_labels(label_path = None, set = None):
     return [cell, images]
 
 
-def save_cropped(sets, counter_tot):
+def save_cropped(datasets, counter_tot):
   if counter_tot  == 0:
     global set_index 
     set_index = 0
     shutil.rmtree("/cropped_drops", ignore_errors=True)
     os.mkdir("/cropped_drops")
   
-  dataset = sets[set_index]
+  dataset = datasets[set_index]
   counter_set = 0
   for j, im_file in enumerate(os.listdir(f"../{dataset}/images")):
     if j % 5 == 0:
@@ -119,7 +119,7 @@ def save_cropped(sets, counter_tot):
   print(f"number of images saved from {dataset} set: {counter_set}")
   if set_index < len(sets)-1:
     set_index += 1
-    counter_tot = save_cropped(sets, counter_tot)
+    counter_tot = save_cropped(datasets, counter_tot)
   return counter_tot
 
 
