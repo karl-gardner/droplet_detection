@@ -300,14 +300,12 @@ def wh_iou(wh1, wh2):
 
 
 # Plots ----------------------------------------------------------------------------------------------------------------
+
 # karl-gardner changes in plot_pr_curve --------------------------------------------------------------------------------
 
 def plot_pr_curve(px, py, ap, save_dir='pr_curve.tif', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(15, 6), tight_layout=True)
-    
-    # save legend externally
-    legendFig = plt.figure("Legend plot", figsize=[14,2])
     
     # inset axis....
     axins = ax.inset_axes([0.2, 0.05, 0.3, 0.7])
