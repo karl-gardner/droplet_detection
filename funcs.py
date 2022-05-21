@@ -124,7 +124,7 @@ def save_cropped(datasets, counter_tot):
 
 
 
-def save_map(results_path):
+def save_map(results_path, title):
   map5 = []
   map595 = []
   with open(results_path, newline='') as csvfile:
@@ -147,10 +147,10 @@ def save_map(results_path):
   axs[1].tick_params(axis='both', which='major', labelsize=29)
   axs[1].set_ylabel("mAP\n@ IOU 0.5:0.95", fontsize=35, fontfamily="Arial")
   axs[1].set_xlabel("Epochs", fontsize=35, fontfamily="Arial")
-  fig.suptitle("YOLOv3",fontsize=45,fontfamily="Arial", y=1.05)
+  fig.suptitle(title,fontsize=45,fontfamily="Arial", y=1.05)
   fig.tight_layout(pad=4)
 
-  fig.savefig("/mAP_yolov3.png", dpi=500, bbox_inches='tight')
+  fig.savefig(f"/mAP_{title.lower()}.png", dpi=500, bbox_inches='tight')
 
   
 def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 255), box_thick=1, fontsize = 1, tf = 1, filled = True):
