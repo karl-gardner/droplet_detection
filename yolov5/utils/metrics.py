@@ -303,7 +303,7 @@ def wh_iou(wh1, wh2):
 
 # karl-gardner changes in plot_pr_curve --------------------------------------------------------------------------------
 
-def plot_pr_curve(px, py, ap, save_dir='pr_curve.tif', names=()):
+def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     # Precision-recall curve
     fig, ax = plt.subplots(1, 1, figsize=(15, 6), tight_layout=True)
     
