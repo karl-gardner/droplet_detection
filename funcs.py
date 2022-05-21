@@ -117,7 +117,7 @@ def save_cropped(datasets, counter_tot):
         counter_tot += 1
         counter_set += 1
   print(f"number of images saved from {dataset} set: {counter_set}")
-  if set_index < len(sets)-1:
+  if set_index < len(datasets)-1:
     set_index += 1
     counter_tot = save_cropped(datasets, counter_tot)
   return counter_tot
