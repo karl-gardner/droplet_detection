@@ -17,7 +17,7 @@
   <img src="https://user-images.githubusercontent.com/91646805/156641388-c609a6aa-8fce-47f0-a111-abfde9c5da05.svg" height="32"/></a><br>
   
   <a href="[https://github.com/ultralytics](https://www.rsc.org/journals-books-databases/about-journals/lab-on-a-chip/">
-  <img src="https://user-images.githubusercontent.com/91646805/156641066-fbc3635b-f373-4cb7-b141-9bcaad21beff.svg" height="32"/></a>
+  <img src="https://user-images.githubusercontent.com/91646805/169677309-ef530ccc-2686-485a-90db-d936800d4ca7.svg" height="32"/></a>
   
   <a href="https://colab.research.google.com/github/karl-gardner/droplet_detection/blob/master/yolov3.ipynb">
   <img src="https://user-images.githubusercontent.com/91646805/156640198-51f0ef4c-21c1-4d0f-aebd-861561dede95.svg" height="32"/></a>
@@ -27,8 +27,7 @@
   
   <a href="https://github.com/ultralytics">
   <img src="https://user-images.githubusercontent.com/91646805/156641066-fbc3635b-f373-4cb7-b141-9bcaad21beff.svg" height="32"/></a>
-  
-  ![LOC](https://user-images.githubusercontent.com/91646805/169677309-ef530ccc-2686-485a-90db-d936800d4ca7.svg)
+
 
   
 
