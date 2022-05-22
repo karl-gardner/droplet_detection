@@ -57,8 +57,10 @@ Encapsulation of cells inside microfluidic droplets is central to several applic
 <details>
 <summary>Testing (click to expand)</summary><br>
 Many figures and tables from the paper are outlined in yolov3.ipynb and yolov5.ipynb colab notebooks. For example Table 2 displays the annotation summary for cell and droplet models before augmentations. This can be shown in section 2. of the colab notebook:
-![table_2](https://user-images.githubusercontent.com/91646805/169673644-d9b686dc-cd78-414e-91e1-dd51a9daea63.jpg)
 
+
+![table_2](https://user-images.githubusercontent.com/91646805/169673685-cf782a19-ebbf-4f5e-82ba-0f7d42a37402.jpg)
+![table_2](https://user-images.githubusercontent.com/91646805/169673687-da2978fa-8dbb-40a9-8beb-35aaabe29bb6.png)
 
 
 
