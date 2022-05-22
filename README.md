@@ -60,6 +60,8 @@ Many figures and tables from the paper are outlined in yolov3.ipynb and yolov5.i
 ![table_2](https://user-images.githubusercontent.com/91646805/169673685-cf782a19-ebbf-4f5e-82ba-0f7d42a37402.jpg)
 You may run this for example by first uncommenting section 1.1 labeled "Data with No Augmentation (No_Augmentation)" then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:
 ![table_2](https://user-images.githubusercontent.com/91646805/169673771-67437016-8bab-4278-a635-e74469940046.jpg)
+![table_2_droplet](https://user-images.githubusercontent.com/91646805/169673787-fd00dc84-6f77-4a7b-a56a-95c4aed674eb.png)
+![table_2](https://user-images.githubusercontent.com/91646805/169673790-7eac1d23-3bcb-4a19-b92e-cfeee3fb2bfb.png)
 
 </details>
 
