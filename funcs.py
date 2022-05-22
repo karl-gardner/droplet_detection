@@ -170,6 +170,7 @@ def box_label(image, box, label='', color=(128, 128, 128), txt_color=(255, 255, 
     
     
 def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,255)], pred_labels = ''):
+  shutil.rmtree("/label_results", ignore_errors=True)
   os.mkdir('/label_results')
   os.mkdir('/label_results/inputs')
   
