@@ -124,7 +124,7 @@ def save_cropped(datasets, counter_tot):
 
 
 
-def save_map(results_path, title):
+def save_map(results_path, title, epoch=None):
   map5 = []
   map595 = []
   with open(results_path, newline='') as csvfile:
@@ -136,6 +136,9 @@ def save_map(results_path, title):
           map5.append(float(elem.strip()))
         if i == 7:
           map595.append(float(elem.strip()))
+  if epoch:
+    map5 = map5[:(epoch+1)]
+    map595 = map595[:(epoch+1)]
   fig, axs = plt.subplots(1, 2, figsize=(18,6))
   axs[0].plot(map5, color="blue", marker='.', linewidth=2, markersize=12)
   axs[0].set_ylim(0, 1)
