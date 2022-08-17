@@ -315,7 +315,7 @@ def plot_pr_curve(px, py, ap, save_dir='pr_curve.png', names=()):
     if 0 < len(names) < 21:  # display per-class legend if < 21 classes
         for i, y in enumerate(py.T):
             ax.plot(px, y, linewidth=1, label=f'{names[i]} {ap[i, 0]:.3f}')  # plot(recall, precision)
-            ax.plot(px, y, linewidth=1, label='single class cell @ IOU 0.5)  # plot(recall, precision)
+            ax.plot(px, y, linewidth=1, label='single class cell @ IOU 0.5')  # plot(recall, precision)
 #             axins.plot(px, y, linewidth=2)
     else:
         ax.plot(px, py, linewidth=1, color='grey')  # plot(recall, precision)
