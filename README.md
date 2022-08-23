@@ -67,9 +67,9 @@ Nearly all figures and tables from the paper are outlined in yolov3.ipynb and yo
 You may run this for example by first uncommenting section 1.1 labeled "Data with No Augmentation (No_Augmentation)": 
 ![Capture](https://user-images.githubusercontent.com/91646805/186239750-7bce473d-13cf-4798-b703-f96a715f0f2c.PNG)
 then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:
-
 ![Capture](https://user-images.githubusercontent.com/91646805/186240727-30bf1b5b-633f-4be3-9f3d-c739e189a80e.PNG)
-
+The same procedure can be used for the cell model to produce the following result:
+![Capture](https://user-images.githubusercontent.com/91646805/186241503-6b8fb842-f7e5-4b6b-b98c-a53ead943cf5.PNG)
 
 </details>
 
