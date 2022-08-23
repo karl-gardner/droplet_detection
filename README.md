@@ -67,7 +67,8 @@ You may run this for example by first uncommenting section 1.1 labeled "Data wit
 then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:
 
 The same procedure can be used for the cell model to produce the following result:
-
+![cell_annotations](https://user-images.githubusercontent.com/91646805/186244683-2526c5a2-115b-49e1-af9f-e04b063771a8.PNG)
+<br>
 This matches Table 2 in the publication:<br><br>
 ![table_2](https://user-images.githubusercontent.com/91646805/186243887-50615a7d-5bb1-4a83-9fc1-b872296dafb2.PNG)
 
