@@ -67,14 +67,13 @@ You may run this for example by first uncommenting section 1.1 labeled "Data wit
 <img src="https://user-images.githubusercontent.com/91646805/186249216-0d38a78b-a25b-436e-919b-e94f19776039.PNG"/></a>
 <br><br>
 then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:<br><br>
-<img src="https://user-images.githubusercontent.com/91646805/186248580-b9d22a03-ee4f-451f-bd5e-19af2ee4fb01.PNG"/></a>
+<img src="https://user-images.githubusercontent.com/91646805/186249418-e3420c46-20d0-4803-bd65-38fe8fb1bea1.PNG"/></a>
 <br><br>
 The same procedure can be used for the cell model to produce the following result:<br><br>
-<img src="https://user-images.githubusercontent.com/91646805/186248580-b9d22a03-ee4f-451f-bd5e-19af2ee4fb01.PNG"/></a>
+<img src="https://user-images.githubusercontent.com/91646805/186249529-27c786d9-fb73-47a9-9590-dcc8f5fd277f.PNG"/></a>
 <br><br>
 This matches Table 2 in the publication:<br><br>
-
-
+<img src="https://user-images.githubusercontent.com/91646805/186249617-8fddc568-d50a-443b-a4b3-fb9186071308.PNG"/></a>
 
 </details>
 
