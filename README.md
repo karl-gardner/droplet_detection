@@ -60,17 +60,18 @@ Encapsulation of cells inside microfluidic droplets is central to several applic
 
 <details>
 <summary>Testing (click to expand)</summary><br>
-Nearly all figures and tables from the paper are outlined in yolov3.ipynb and yolov5.ipynb colab notebooks. For example Table 2 displays the annotation summary for cell and droplet models before augmentations. This can be shown in section 2. of the colab notebook:
-
+Nearly all figures and tables from the paper are outlined in yolov3.ipynb and yolov5.ipynb colab notebooks. For example Table 2 displays the annotation summary for cell and droplet models before augmentations. This can be shown in section 2. of the colab notebook:<br>
 ![Capture](https://user-images.githubusercontent.com/91646805/186238977-e21610fc-181c-4bc0-88f4-10545af42387.PNG)
-
-You may run this for example by first uncommenting section 1.1 labeled "Data with No Augmentation (No_Augmentation)": 
+<br>
+You may run this for example by first uncommenting section 1.1 labeled "Data with No Augmentation (No_Augmentation)":<br>
 ![Capture](https://user-images.githubusercontent.com/91646805/186239750-7bce473d-13cf-4798-b703-f96a715f0f2c.PNG)
-then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:
+<br>
+then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:<br>
 ![Capture](https://user-images.githubusercontent.com/91646805/186240727-30bf1b5b-633f-4be3-9f3d-c739e189a80e.PNG)
-The same procedure can be used for the cell model to produce the following result:
+<br>
+The same procedure can be used for the cell model to produce the following result:<br>
 ![Capture](https://user-images.githubusercontent.com/91646805/186241503-6b8fb842-f7e5-4b6b-b98c-a53ead943cf5.PNG)
-This matches Table 2 in the publication:
+This matches Table 2 in the publication:<br>
 ![Capture](https://user-images.githubusercontent.com/91646805/186242132-795a305b-5fc9-4ba9-8833-0ae7be94d9db.PNG)
 
 </details>
