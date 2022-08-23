@@ -68,7 +68,7 @@ then uncommenting section 2. labeled: "For droplet model". Then the following ou
 
 The same procedure can be used for the cell model to produce the following result:
 
-This matches Table 2 in the publication:<br>
+This matches Table 2 in the publication:<br><br>
 ![table_2](https://user-images.githubusercontent.com/91646805/186243887-50615a7d-5bb1-4a83-9fc1-b872296dafb2.PNG)
 
 
