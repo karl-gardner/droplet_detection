@@ -70,6 +70,8 @@ then uncommenting section 2. labeled: "For droplet model". Then the following ou
 ![Capture](https://user-images.githubusercontent.com/91646805/186240727-30bf1b5b-633f-4be3-9f3d-c739e189a80e.PNG)
 The same procedure can be used for the cell model to produce the following result:
 ![Capture](https://user-images.githubusercontent.com/91646805/186241503-6b8fb842-f7e5-4b6b-b98c-a53ead943cf5.PNG)
+This matches Table 2 in the publication:
+![Capture](https://user-images.githubusercontent.com/91646805/186242132-795a305b-5fc9-4ba9-8833-0ae7be94d9db.PNG)
 
 </details>
 
