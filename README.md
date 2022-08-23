@@ -64,11 +64,10 @@ Nearly all figures and tables from the paper are outlined in yolov3.ipynb and yo
 
 ![Capture](https://user-images.githubusercontent.com/91646805/186238977-e21610fc-181c-4bc0-88f4-10545af42387.PNG)
 
-
-
 You may run this for example by first uncommenting section 1.1 labeled "Data with No Augmentation (No_Augmentation)": 
 ![Capture](https://user-images.githubusercontent.com/91646805/186239750-7bce473d-13cf-4798-b703-f96a715f0f2c.PNG)
 then uncommenting section 2. labeled: "For droplet model". Then the following output will be printed:
+![Capture](https://user-images.githubusercontent.com/91646805/186240526-ff5be46b-eb9a-4da1-ac3d-3f461f03e86a.PNG)
 
 
 </details>
