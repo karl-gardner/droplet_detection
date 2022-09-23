@@ -234,7 +234,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
       for i in range(gt_boxes.shape[0]):
         b = gt_boxes[i,:]
 #         gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
-        gt_im = box_label(gt_im, b, label='', color=(0,0,0), txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
+        gt_im = box_label(gt_im, b, label=gt_labels[gt_classes[i]], color=(0,0,0), txt_color=(0,0,0), box_thick=gt_box_thick, fontsize=0.55, tf=1)
 #       gt_im = box_label(gt_im, b, label='', color=gt_colors[gt_classes[i]], txt_color=(0,0,0), box_thick=2, fontsize=0.55, tf=1)
 
       # Now save ground truth images and input images
