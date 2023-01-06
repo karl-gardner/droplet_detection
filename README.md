@@ -56,7 +56,7 @@ Encapsulation of cells inside microfluidic droplets is central to several applic
 
 9) Repeat steps 7 and 8 with the cell dataset <a href="https://universe.roboflow.com/karl-gardner-kmk9u/cropped_drops2/dataset/3">
   <img src="https://user-images.githubusercontent.com/91646805/156698862-6591ba12-a90f-4495-8736-cab83f5cd237.svg" height="18"/></a>
-10) You can now use both notebooks to perform more testing or contribute to the project.  You can find the code written for many of the figures in the final paper: DOI Website
+10) You can now use both notebooks to perform more testing or contribute to the project.  You can find the code written for many of the figures in the final paper: https://doi.org/10.1039/D2LC00462C
 </details>
 
 <details>
