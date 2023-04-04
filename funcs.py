@@ -249,6 +249,7 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
     os.mkdir('/label_results/preds')
     for f in sorted(os.listdir(images_path)):
       im_file = images_path + '/' + f
+      print("image_file:",im_file)
       input_im = cv2.imread(im_file)
       pred_file = 'runs/detect/exp/labels/' + f[0:-4] + '.txt'
       try:
