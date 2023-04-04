@@ -280,10 +280,10 @@ def save_labels(images_path, model, gt_colors=[(0, 255, 0)], pred_colors=[(0,0,2
         pred_im = np.copy(input_im)
         for i in range(pred_boxes.shape[0]):
           b = pred_boxes[i,:]
-          pred_im = box_label(pred_im, b, label=pred_labels + ('%.2f' % conf[i]), color=pred_colors[pred_classes[i]],
-                         txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
-#           pred_im = box_label(pred_im, b, label='', color=pred_colors[pred_classes[i]],
+#           pred_im = box_label(pred_im, b, label=pred_labels + ('%.2f' % conf[i]), color=pred_colors[pred_classes[i]],
 #                          txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
+          pred_im = box_label(pred_im, b, label=pred_labels[pred_classes[i]], color=pred_colors[pred_classes[i]],
+                         txt_color=text_color, box_thick=box_thickness, fontsize=font_size, tf =font_thickness)
 
         cv2.imwrite('/label_results/inputs/' + f[:-4] + '.png', input_im)
         cv2.imwrite('/label_results/preds/' + f[:-4] + '.png',pred_im)
